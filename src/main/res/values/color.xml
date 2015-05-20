@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="tab_text_nomal">#C1CDCD</color>
+    <color name="tab_text_pressed">#FFFFFF</color>
+     <color name="quick_menu_nomal">#000000</color>
+     <color name="quick_menu_pressed">#808080</color>
+
+</resources>
