@@ -1,6 +1,8 @@
 package cn.edu.pkusz.battery;
 
 
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -16,6 +18,7 @@ import cn.edu.pkusz.battery.fragment.TabFragment_1;
 import cn.edu.pkusz.battery.fragment.TabFragment_2;
 import cn.edu.pkusz.battery.fragment.TabFragment_3;
 import cn.edu.pkusz.battery.fragment.TabFragment_4;
+import cn.edu.pkusz.battery.power.BatteryStatus;
 
 /**
  * 
@@ -48,6 +51,13 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		fragmentManager = getSupportFragmentManager();
 		// 第一次启动时选中第0个tab
 		setTabSelection(0);
+		init();
+
+	}
+
+	private void init() {
+		IntentFilter intentFilter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+		BatteryStatus.batteryStatus = this.registerReceiver(null, intentFilter);
 	}
 
 	private void setTabSelection(int index) {
