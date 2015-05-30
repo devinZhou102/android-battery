@@ -55,7 +55,6 @@
         custom:donut_text_color="#FFFFFF"
         custom:donut_text_size="35dp"
         custom:donut_finished_color="#ff00bb00"
-        custom:donut_suffix_text="%"
         custom:donut_finished_stroke_width="15dp"
         custom:donut_unfinished_stroke_width="10dp" />
 </LinearLayout>
