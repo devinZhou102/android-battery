@@ -16,7 +16,6 @@ import cn.edu.pkusz.battery.fragment.TabFragment_1;
 import cn.edu.pkusz.battery.fragment.TabFragment_2;
 import cn.edu.pkusz.battery.fragment.TabFragment_3;
 import cn.edu.pkusz.battery.fragment.TabFragment_4;
-import cn.edu.pkusz.battery.fragment.TabFragment_5;
 
 /**
  * 
@@ -25,11 +24,9 @@ import cn.edu.pkusz.battery.fragment.TabFragment_5;
  */
 public class MainActivity extends FragmentActivity implements OnClickListener {
 
-	private View tab_view_1, tab_view_2, tab_view_3, tab_view_4, tab_view_5;
-	private ImageView tab_icon_1, tab_icon_2, tab_icon_3, tab_icon_4,
-			tab_icon_5;
-	private TextView tab_text_1, tab_text_2, tab_text_3, tab_text_4,
-			tab_text_5;
+	private View tab_view_1, tab_view_2, tab_view_3, tab_view_4;
+	private ImageView tab_icon_1, tab_icon_2, tab_icon_3, tab_icon_4;
+	private TextView tab_text_1, tab_text_2, tab_text_3, tab_text_4;
 	private int tab_status = -1;
 
 	/**
@@ -41,7 +38,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private TabFragment_2 tabFragment_2;
 	private TabFragment_3 tabFragment_3;
 	private TabFragment_4 tabFragment_4;
-	private TabFragment_5 tabFragment_5;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -117,19 +113,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				transaction.show(tabFragment_4);
 			}
 			break;
-		case 4:
-			tab_view_5.setBackgroundResource(R.drawable.tab_right_pressed);
-			tab_icon_5.setImageResource(R.drawable.battery_tab_icon05_pressed);
-			tab_text_5.setTextColor(Color.WHITE);
-			if (tabFragment_5 == null) {
-				// 如果Fragment为空，则创建一个并添加到界面上
-				tabFragment_5 = new TabFragment_5();
-				transaction.add(R.id.content, tabFragment_5);
-			} else {
-				// 如果Fragment不为空，则直接将它显示出来
-				transaction.show(tabFragment_5);
-			}
-			break;
 		default:
 			break;
 		}
@@ -172,9 +155,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		if (tabFragment_4 != null) {
 			transaction.hide(tabFragment_4);
 		}
-		if (tabFragment_5 != null) {
-			transaction.hide(tabFragment_5);
-		}
 	}
 
 	@Override
@@ -193,9 +173,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		case R.id.linearLayout_tab_4:
 			setTabSelection(3);
 			break;
-		case R.id.linearLayout_tab_5:
-			setTabSelection(4);
-			break;
 		default:
 			break;
 		}
@@ -206,31 +183,26 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		tab_view_2 = findViewById(R.id.linearLayout_tab_2);
 		tab_view_3 = findViewById(R.id.linearLayout_tab_3);
 		tab_view_4 = findViewById(R.id.linearLayout_tab_4);
-		tab_view_5 = findViewById(R.id.linearLayout_tab_5);
 
 		tab_icon_1 = (ImageView) findViewById(R.id.tab_icon_1);
 		tab_icon_2 = (ImageView) findViewById(R.id.tab_icon_2);
 		tab_icon_3 = (ImageView) findViewById(R.id.tab_icon_3);
 		tab_icon_4 = (ImageView) findViewById(R.id.tab_icon_4);
-		tab_icon_5 = (ImageView) findViewById(R.id.tab_icon_5);
 
 		tab_text_1 = (TextView) findViewById(R.id.tab_text_1);
 		tab_text_2 = (TextView) findViewById(R.id.tab_text_2);
 		tab_text_3 = (TextView) findViewById(R.id.tab_text_3);
 		tab_text_4 = (TextView) findViewById(R.id.tab_text_4);
-		tab_text_5 = (TextView) findViewById(R.id.tab_text_5);
 
 		tab_text_1.setTextColor(Color.GRAY);
 		tab_text_2.setTextColor(Color.GRAY);
 		tab_text_3.setTextColor(Color.GRAY);
 		tab_text_4.setTextColor(Color.GRAY);
-		tab_text_5.setTextColor(Color.GRAY);
 
 		tab_view_1.setOnClickListener(this);
 		tab_view_2.setOnClickListener(this);
 		tab_view_3.setOnClickListener(this);
 		tab_view_4.setOnClickListener(this);
-		tab_view_5.setOnClickListener(this);
 	}
 
 	/**
@@ -241,19 +213,15 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		tab_view_2.setBackgroundResource(0);
 		tab_view_3.setBackgroundResource(0);
 		tab_view_4.setBackgroundResource(0);
-		tab_view_5.setBackgroundResource(0);
 
 		tab_icon_1.setImageResource(R.drawable.battery_tab_icon01_normal);
 		tab_icon_2.setImageResource(R.drawable.battery_tab_icon02_normal);
 		tab_icon_3.setImageResource(R.drawable.battery_tab_icon03_normal);
 		tab_icon_4.setImageResource(R.drawable.battery_tab_icon04_normal);
-		tab_icon_5.setImageResource(R.drawable.battery_tab_icon05_normal);
 
 		tab_text_1.setTextColor(Color.GRAY);
 		tab_text_2.setTextColor(Color.GRAY);
 		tab_text_3.setTextColor(Color.GRAY);
 		tab_text_4.setTextColor(Color.GRAY);
-		tab_text_5.setTextColor(Color.GRAY);
-
 	}
 }
