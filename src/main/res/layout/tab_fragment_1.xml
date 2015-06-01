@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/body_background"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -57,4 +58,21 @@
         custom:donut_finished_color="#ff00bb00"
         custom:donut_finished_stroke_width="15dp"
         custom:donut_unfinished_stroke_width="10dp" />
+
+    <LinearLayout
+        android:id="@+id/battery_info"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="#ff858585"
+        android:layout_weight="0.11">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="电池信息"
+             />
+    </LinearLayout>
+
 </LinearLayout>

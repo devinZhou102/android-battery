@@ -8,22 +8,34 @@
         android:minSdkVersion="15"
         android:targetSdkVersion="15" />
 
+    <android:uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <android:uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="18" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@android:style/Theme.Black.NoTitleBar" >
         <activity
-            android:name="cn.edu.pkusz.battery.SplashActivity"
-            android:label="@string/app_name" 
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
+            android:name=".SplashActivity"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="cn.edu.pkusz.battery.MainActivity" />
+        <activity android:name=".MainActivity" />
+        <activity
+            android:name=".power.BatteryInfoActivity"
+            android:label="@string/title_activity_battery_info" >
+        </activity>
     </application>
 
 </manifest>

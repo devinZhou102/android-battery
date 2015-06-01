@@ -1,13 +1,17 @@
 package cn.edu.pkusz.battery.fragment;
 
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import cn.edu.pkusz.battery.R;
 import cn.edu.pkusz.battery.circleprogress.DonutProgress;
+import cn.edu.pkusz.battery.power.BatteryInfoActivity;
 import cn.edu.pkusz.battery.power.BatteryStatus;
 
 
@@ -18,10 +22,19 @@ public class TabFragment_1 extends Fragment {
     private static final int LOW_POWER_LIMIT = 20;
     private View view;
     private DonutProgress donutProgress;
-
+    private LinearLayout mBatteryInfo;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.tab_fragment_1, container, false);
+        mBatteryInfo = (LinearLayout)view.findViewById(R.id.battery_info);
+        mBatteryInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), BatteryInfoActivity.class);
+                startActivity(intent);
+            }
+        });
+
         return view;
     }
 
@@ -42,8 +55,8 @@ public class TabFragment_1 extends Fragment {
         }
     }
 
-    /*
-    显示电量环形进度条, 如果电量低于 @see LOW_POWER_LIMIT
+    /**
+    显示电量环形进度条, 如果电量低于 {@link #LOW_POWER_LIMIT}
      */
     public void showLevelCircleProgress() {
         if (donutProgress == null) {
@@ -62,7 +75,7 @@ public class TabFragment_1 extends Fragment {
                     int progress = 0;
 
                     Thread.sleep(500);
-                    while (progress <= level) {
+                    while (progress < level) {
                         progress += 1;
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
@@ -70,7 +83,7 @@ public class TabFragment_1 extends Fragment {
                                 donutProgress.setProgress(donutProgress.getProgress() + 1);
                             }
                         });
-                        Thread.sleep(15);
+                        Thread.sleep(10);
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

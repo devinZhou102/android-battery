@@ -12,7 +12,7 @@ import android.content.Intent;
  */
 public class SplashActivity extends Activity {
 
-	private final int START_FULLSCREEN_TIME = 5000;
+	private final int START_FULLSCREEN_TIME = 1000;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
