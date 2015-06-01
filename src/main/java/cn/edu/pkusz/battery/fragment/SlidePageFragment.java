@@ -58,29 +58,46 @@ public class SlidePageFragment extends Fragment {
     }
 
     private void initChart() {
-        double x [] = {1,2,3,4,5,6};
-        double y [] = {100,75,60,20,50,90};
+        double x [] = {1,2,3,4,5,6,7};
+        double y [] = {100,75,60,20,50,90,80};
         mRenderer.setOrientation(XYMultipleSeriesRenderer.Orientation.HORIZONTAL);
-        mRenderer.setXAxisMax(7);
+        mRenderer.setXAxisMin(1);
+        mRenderer.setXAxisMax(7.2);
         mRenderer.setYAxisMin(0);
-        mRenderer.setXAxisMin(0);
-        mRenderer.setYAxisMax(105);
+        mRenderer.setYAxisMax(102);
         mRenderer.setYLabelsPadding(2);
+        mRenderer.setXLabelsAlign(Paint.Align.CENTER);
         mRenderer.setYLabelsAlign(Paint.Align.RIGHT);
-        mRenderer.setXLabels(5);
-        mRenderer.setYLabels(10);
+        mRenderer.setXLabels(0);
+        mRenderer.addXTextLabel(1,"00:00");
+        mRenderer.addXTextLabel(2,"04:00");
+        mRenderer.addXTextLabel(3,"08:00");
+        mRenderer.addXTextLabel(4,"12:00");
+        mRenderer.addXTextLabel(5,"16:00");
+        mRenderer.addXTextLabel(6,"20:00");
+        mRenderer.addXTextLabel(7,"24:00");
+        mRenderer.setYLabels(0);
+        mRenderer.addYTextLabel(20,"20");
+        mRenderer.addYTextLabel(40,"40");
+        mRenderer.addYTextLabel(60,"60");
+        mRenderer.addYTextLabel(80,"80");
+        mRenderer.addYTextLabel(100,"100");
+        mRenderer.setShowGrid(true);
+        //当自定义坐标轴标签时使用该方法可以显示网格
+        mRenderer.setShowCustomTextGrid(true);
         //不可沿X轴和Y轴拖动
         mRenderer.setPanEnabled(false, false);
         //不可缩放
         mRenderer.setZoomEnabled(false, false);
+        mRenderer.setExternalZoomEnabled(false);
         //不可点击
         mRenderer.setClickEnabled(false);
-        mRenderer.setPointSize(5);
 
         mRenderer.setApplyBackgroundColor(true);
-//        mRenderer.setBackgroundColor(Color.argb(255, 100, 100, 100));
         mRenderer.setBackgroundColor(Color.DKGRAY);
-        mRenderer.setShowGrid(true);
+        mRenderer.setPointSize(5f);
+        //不显示legend(坐标轴的说明文字)
+        mRenderer.setShowLegend(false);
 
         XYSeriesRenderer render = new XYSeriesRenderer();
         //设置线的颜色
@@ -88,10 +105,10 @@ public class SlidePageFragment extends Fragment {
         //设置点的类型
         render.setPointStyle(PointStyle.CIRCLE);
         //点是否是实心的
-        render.setFillPoints(true);
+        render.setFillPoints(false);
         render.setLineWidth(2);
-        //不显示legend
-        render.setShowLegendItem(false);
+        //设置空心点的线宽
+        render.setPointStrokeWidth(3f);
         mRenderer.addSeriesRenderer(render);
         XYSeries series = new XYSeries(""+getmPageNumber());
         for(int i=0;i<x.length;i++){
