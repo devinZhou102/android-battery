@@ -1,12 +1,12 @@
 package cn.edu.pkusz.battery;
 
 import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
@@ -15,22 +15,55 @@ import org.achartengine.model.XYMultipleSeriesDataset;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 
 import cn.edu.pkusz.battery.network.TrafficChart;
-import cn.edu.pkusz.battery.power.BatteryLevelChart;
 
 
 public class AppDetailActivity extends FragmentActivity {
+    /**
+     启动这个Activity的对象应该同时传递一个Intent，Intent中包含了@link #CPU_AMOUNT
+     */
+
+    public static final String CPU_AMOUNT = "cpu_amount";
+    public static final String DOWNLOAD_AMOUNT = "download_amount";
+    public static final String UPLOAD_AMOUNT = "upload_amount";
+
     private GraphicalView mChartView;
     /** The main dataset that includes all the series that go into a chart. */
     private XYMultipleSeriesDataset mDataset = null;
     /** The main renderer that includes all the renderers customizing a chart. */
     private XYMultipleSeriesRenderer mRenderer = null;
 
+    private TextView mCpuAmount;
+    private TextView mTrafficUpload;
+    private TextView mTrafficDownload;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_detail);
+
+        mCpuAmount = (TextView) findViewById(R.id.cpu_amount);
+        mTrafficUpload = (TextView) findViewById(R.id.traffic_mount_upload);
+        mTrafficDownload = (TextView) findViewById(R.id.traffic_mount_download);
+        //处理CPU使用量
+        setCpuAmount();
+        //处理网络流量
+        setTrafficAmount();
+        //柱状图初始化
         mRenderer = TrafficChart.buildRenderer();
         mDataset = TrafficChart.buildDataset();
+    }
+
+    private void setCpuAmount() {
+        //对接时需要给amount传递对应app所占用的cpu使用量,单位是ms
+        int amount = getIntent().getIntExtra(AppDetailActivity.CPU_AMOUNT,1000);
+        mCpuAmount.setText(amount+"");
+    }
+
+    private void setTrafficAmount() {
+        //对接时需要在此处传递网络流量
+        int upload_amount = getIntent().getIntExtra(AppDetailActivity.UPLOAD_AMOUNT,100);
+        int download_amount = getIntent().getIntExtra(AppDetailActivity.DOWNLOAD_AMOUNT,100);
+        mTrafficUpload.setText(upload_amount + "");
+        mTrafficDownload.setText(download_amount+"");
     }
 
     @Override

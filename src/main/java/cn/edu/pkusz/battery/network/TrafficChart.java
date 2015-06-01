@@ -75,8 +75,6 @@ public class TrafficChart {
 
     public static XYMultipleSeriesDataset buildDataset() {
         XYMultipleSeriesDataset mDataset = new XYMultipleSeriesDataset();
-        double x [] = {1,2,3,4,5,6,7};
-        double y [] = {100,75,60,20,50,90,80};
         Random random = new Random();
         //新建一系列点，标题为空
         XYSeries series = new XYSeries("");
