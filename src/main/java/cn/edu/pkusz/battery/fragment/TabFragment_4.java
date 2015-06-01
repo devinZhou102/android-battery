@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 
+import android.content.Intent;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -14,7 +15,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import cn.edu.pkusz.battery.AppDetailActivity;
+import cn.edu.pkusz.battery.BatteryInfoActivity;
 import cn.edu.pkusz.battery.R;
 
 /**
@@ -23,10 +27,18 @@ import cn.edu.pkusz.battery.R;
  * 
  */
 public class TabFragment_4 extends Fragment {
-
+	private View view;
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		return inflater.inflate(R.layout.tab_fragment_4, container, false);
+		view = inflater.inflate(R.layout.tab_fragment_4, container, false);
+		((Button)view.findViewById(R.id.button)).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent intent = new Intent(getActivity(), AppDetailActivity.class);
+				startActivity(intent);
+			}
+		});
+		return view;
 	}
 
 	@Override

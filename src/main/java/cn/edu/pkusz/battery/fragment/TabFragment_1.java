@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 
 import cn.edu.pkusz.battery.R;
 import cn.edu.pkusz.battery.circleprogress.DonutProgress;
-import cn.edu.pkusz.battery.power.BatteryInfoActivity;
+import cn.edu.pkusz.battery.BatteryInfoActivity;
 import cn.edu.pkusz.battery.power.BatteryStatus;
 
 

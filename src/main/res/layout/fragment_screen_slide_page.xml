@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/chart"
+        android:id="@+id/battery_level_chart"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal" />

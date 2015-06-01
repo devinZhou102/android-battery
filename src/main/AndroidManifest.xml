@@ -8,14 +8,6 @@
         android:minSdkVersion="15"
         android:targetSdkVersion="15" />
 
-    <android:uses-permission
-        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
-    <android:uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <android:uses-permission
-        android:name="android.permission.READ_EXTERNAL_STORAGE"
-        android:maxSdkVersion="18" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -33,8 +25,12 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity
-            android:name=".power.BatteryInfoActivity"
+            android:name=".BatteryInfoActivity"
             android:label="@string/title_activity_battery_info" >
+        </activity>
+        <activity
+            android:name=".AppDetailActivity"
+            android:label="@string/title_activity_app_detail" >
         </activity>
     </application>
 
