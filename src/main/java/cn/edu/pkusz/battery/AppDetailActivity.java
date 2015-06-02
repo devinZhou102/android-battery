@@ -19,7 +19,7 @@ import cn.edu.pkusz.battery.network.TrafficChart;
 
 public class AppDetailActivity extends FragmentActivity {
     /**
-     启动这个Activity的对象应该同时传递一个Intent，Intent中包含了@link #CPU_AMOUNT
+     启动这个Activity的对象应该同时传递一个Intent，Intent中包含了CPU_AMOUNT, DOWNLOAD_AMOUNT, UPLOAD_AMOUNT三个值
      */
 
     public static final String CPU_AMOUNT = "cpu_amount";

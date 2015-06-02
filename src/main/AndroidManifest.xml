@@ -32,6 +32,8 @@
             android:name=".AppDetailActivity"
             android:label="@string/title_activity_app_detail" >
         </activity>
+
+        <service android:name=".service.TimerService" />
     </application>
 
 </manifest>
