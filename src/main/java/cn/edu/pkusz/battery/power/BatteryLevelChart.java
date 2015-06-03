@@ -17,8 +17,8 @@ import java.util.Random;
 import cn.edu.pkusz.battery.BatteryInfoActivity;
 import cn.edu.pkusz.battery.common.Constants;
 import cn.edu.pkusz.battery.common.Static;
-import cn.edu.pkusz.battery.db.BatteryDbHelper;
 import cn.edu.pkusz.battery.db.BatteryLevelEntry;
+import cn.edu.pkusz.battery.db.DbManager;
 
 /**
  * Created by 陶世博 on 2015/6/1.
@@ -137,8 +137,8 @@ public class BatteryLevelChart {
         calendar.add(Calendar.HOUR, 24);
         long end = calendar.getTimeInMillis();
         calendar.add(Calendar.HOUR, -24);
-        BatteryDbHelper batteryDbHelper = Static.getBatteryDbHelper();
-        List<BatteryLevelEntry> list = batteryDbHelper.query(start, end);
+        DbManager dbManager = Static.getDbManager();
+        List<BatteryLevelEntry> list = dbManager.battery_query(start, end);
         if (list.size() == 0) {
             return null;
         }

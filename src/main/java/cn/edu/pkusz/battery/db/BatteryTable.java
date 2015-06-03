@@ -1,65 +1,44 @@
 package cn.edu.pkusz.battery.db;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
-import android.provider.ContactsContract;
 import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import cn.edu.pkusz.battery.GlobalApplication;
-import cn.edu.pkusz.battery.common.Constants;
 import cn.edu.pkusz.battery.common.Static;
 
 /**
- * Created by 陶世博 on 2015/6/2.
+ * Created by 陶世博 on 2015/6/3.
  */
-public class BatteryDbHelper extends SQLiteOpenHelper{
-    private static final String TAG = "BatteryDbHelper";
+public class BatteryTable
+{
+    public static final String TABLE_NAME = "battery";
+    public static final String COLUMN_NAME_TIMESTAMP = "timestamp";
+    public static final String COLUMN_NAME_LEVEL = "level";
 
-    private static final String TABLE_NAME = "battery";
-    private static final String COLUMN_NAME_TIMESTAMP = "timestamp";
-    private static final String COLUMN_NAME_LEVEL = "level";
+    public static final String TEXT_TYPE = " TEXT";
+    public static final String INTEGER_TYPE = " INTEGER";
+    public static final String REAL_TYPE = " REAL";
+    public static final String COMMA_SEP = ",";
 
-    private static final String TEXT_TYPE = " TEXT";
-    private static final String INTEGER_TYPE = " INTEGER";
-    private static final String REAL_TYPE = " REAL";
-    private static final String COMMA_SEP = ",";
-
-    private static final String SQL_CREATE_ENTRIES =
+    public static final String SQL_CREATE_TABLE =
             "CREATE TABLE " + TABLE_NAME + " ("
-                    + BaseColumns._ID + " INTEGER PRIMARY KEY,"
+                    + BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + COLUMN_NAME_TIMESTAMP + TEXT_TYPE + COMMA_SEP
                     + COLUMN_NAME_LEVEL + REAL_TYPE
                     + " )";
-    private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS " + TABLE_NAME;
+    public static final String SQL_DELETE_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
-    public BatteryDbHelper(Context context) {
-        super(context, Constants.DATABASE_NAME, null, Constants.DATABASE_VERSION);
-    }
-
-    @Override
-    public void onCreate(SQLiteDatabase db) {
-        db.execSQL(SQL_CREATE_ENTRIES);
-    }
-
-    @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(SQL_DELETE_ENTRIES);
-        onCreate(db);
-    }
 
     /*
-    插入新数据
-     */
-    public long insert(BatteryLevelEntry entry) {
-        SQLiteDatabase db = getWritableDatabase();
+插入新数据
+ */
+    public static long insert(SQLiteDatabase db ,BatteryLevelEntry entry) {
 
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME_TIMESTAMP, entry.timestamp);
@@ -71,8 +50,7 @@ public class BatteryDbHelper extends SQLiteOpenHelper{
     /*
     查询制定日期之间的电量数据
      */
-    public List<BatteryLevelEntry> query(Long start, Long end) {
-        SQLiteDatabase db = getReadableDatabase();
+    public static List<BatteryLevelEntry> query(SQLiteDatabase db ,Long start, Long end) {
 
         String[] projection = {COLUMN_NAME_TIMESTAMP, COLUMN_NAME_LEVEL};
         String sortOrder = COLUMN_NAME_TIMESTAMP + " ASC";
@@ -97,9 +75,8 @@ public class BatteryDbHelper extends SQLiteOpenHelper{
     /*
     输出所有记录
      */
-    public void selectAll() {
+    public static void showAll(SQLiteDatabase db) {
         Log.e("battery", "====================begin======================");
-        SQLiteDatabase db = getReadableDatabase();
 
         String[] projection = {COLUMN_NAME_TIMESTAMP, COLUMN_NAME_LEVEL};
         String sortOrder = COLUMN_NAME_TIMESTAMP + " ASC";
@@ -118,8 +95,7 @@ public class BatteryDbHelper extends SQLiteOpenHelper{
         Log.e("battery", "====================end======================");
     }
 
-    public void deleteAll() {
-        SQLiteDatabase db = getReadableDatabase();
+    public static void drop(SQLiteDatabase db) {
         db.delete(TABLE_NAME, null, null);
     }
 }
