@@ -1,42 +1,50 @@
 package cn.edu.pkusz.battery.service;
 
 import android.app.Service;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 
-import java.util.Date;
-import java.util.Timer;
+import java.util.GregorianCalendar;
+
+import cn.edu.pkusz.battery.common.Constants;
+import cn.edu.pkusz.battery.common.Static;
+import cn.edu.pkusz.battery.db.BatteryDbHelper;
+import cn.edu.pkusz.battery.db.BatteryLevelEntry;
+import cn.edu.pkusz.battery.power.BatteryStatus;
 
 /**
  * Created by 陶世博 on 2015/6/1.
  */
 public class TimerService extends Service{
 
-    Timer timer = null;
+    private static BatteryDbHelper batteryDbHelper = null;
     private Handler handler = new Handler();
-    //定时间隔
-    public static final int INTERVAL = 1000;
+
+    static {
+        batteryDbHelper = Static.getBatteryDbHelper();
+
+    }
 
     private Runnable mTasks = new Runnable()
     {
-
-        public void run()
-        {
-            Log.e("task : ", "run "+ new Date());
+        public void run() {
             // 添加具体需要做的事情：
-
-            handler.postDelayed(mTasks, INTERVAL);
+            long now = new GregorianCalendar().getTimeInMillis();
+            float level = BatteryStatus.getBatteryLevel();
+            batteryDbHelper.insert(new BatteryLevelEntry(now, level));
+            handler.postDelayed(mTasks, getInterval());
         }
     };
 
+    private long getInterval() {
+        return Constants.INTERVAL;
+    }
+
     @Override
     public void onCreate() {
-        Log.e("time service:", "onCreated");
+        Log.e("timestamp service:", "onCreated");
         super.onCreate();
         handler.postDelayed(mTasks, 1000);
     }

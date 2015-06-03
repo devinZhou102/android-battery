@@ -23,6 +23,8 @@ public class TabFragment_1 extends Fragment {
     private View view;
     private DonutProgress donutProgress;
     private LinearLayout mBatteryInfo;
+    private boolean visibleFlag = true;
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.tab_fragment_1, container, false);
@@ -34,31 +36,40 @@ public class TabFragment_1 extends Fragment {
                 startActivity(intent);
             }
         });
-
         return view;
     }
 
     @Override
     public void onResume() {
         super.onResume();
+        visibleFlag = true;
         showLevelCircleProgress();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        visibleFlag = false;
     }
 
     /*
     当fragment重新显示时选择重绘环形进度条
-     */
+    */
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (this.isVisible()) {
+            visibleFlag = true;
             showLevelCircleProgress();
+        }else {
+            visibleFlag = false;
         }
     }
 
     /**
     显示电量环形进度条, 如果电量低于 {@link #LOW_POWER_LIMIT}
      */
-    public void showLevelCircleProgress() {
+    public void  showLevelCircleProgress() {
         if (donutProgress == null) {
             donutProgress = (DonutProgress) getActivity().findViewById(R.id.donut_progress);
         }
@@ -73,9 +84,8 @@ public class TabFragment_1 extends Fragment {
             public void run() {
                 try {
                     int progress = 0;
-
                     Thread.sleep(500);
-                    while (progress < level) {
+                    while (progress < level && visibleFlag==true) {
                         progress += 1;
                         getActivity().runOnUiThread(new Runnable() {
                             @Override

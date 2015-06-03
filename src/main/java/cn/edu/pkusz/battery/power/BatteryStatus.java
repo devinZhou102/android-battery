@@ -1,8 +1,9 @@
 package cn.edu.pkusz.battery.power;
 
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.BatteryManager;
+
+import cn.edu.pkusz.battery.GlobalApplication;
 
 /**
  * Created by 陶世博 on 2015/5/30.
@@ -12,7 +13,7 @@ public class BatteryStatus {
         USB , AC
     }
 
-    public static Intent batteryStatus;
+    public static Intent batteryStatus = new Intent();
 
 
     /*

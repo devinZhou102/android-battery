@@ -7,12 +7,13 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 
 import cn.edu.pkusz.battery.R;
 import cn.edu.pkusz.battery.fragment.SlidePageFragment;
 
 public class BatteryInfoActivity extends FragmentActivity {
-    private static final int NUM_PAGES = 3;
+    public static final int NUM_PAGES = 3;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
 
@@ -32,8 +33,10 @@ public class BatteryInfoActivity extends FragmentActivity {
                 // fragment expose actions itself (rather than the activity exposing actions),
                 // but for simplicity, the activity provides the actions in this sample.
                 supportInvalidateOptionsMenu();
+                Log.e("position", position + "");
             }
         });
+        mPager.setCurrentItem(2);
     }
 
     private class SlidePagerAdapter extends FragmentStatePagerAdapter {
