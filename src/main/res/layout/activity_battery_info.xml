@@ -1,5 +1,6 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -21,6 +22,20 @@
         android:padding="2dp"
         android:background="#ff0058c5"
          />
+    <cn.edu.pkusz.battery.indicator.CirclePageIndicator
+        android:id="@+id/indicator"
+        android:padding="5dp"
+        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:background="#ff3c3c3c"
+        custom:fillColor="#ffeeeeee"
+        custom:pageColor="#88FF0000"
+        custom:strokeColor="#ff0058c5"
+        custom:strokeWidth="1dp"
+        custom:radius="5dp"
+        custom:centered="true"
+        />
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"

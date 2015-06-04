@@ -9,14 +9,15 @@ import android.support.v4.view.ViewPager;
 import android.os.Bundle;
 import android.util.Log;
 
-import cn.edu.pkusz.battery.R;
 import cn.edu.pkusz.battery.fragment.SlidePageFragment;
+import cn.edu.pkusz.battery.indicator.CirclePageIndicator;
+import cn.edu.pkusz.battery.indicator.PageIndicator;
 
 public class BatteryInfoActivity extends FragmentActivity {
     public static final int NUM_PAGES = 3;
     private ViewPager mPager;
     private PagerAdapter mPagerAdapter;
-
+    private PageIndicator mIndicator;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,17 +26,10 @@ public class BatteryInfoActivity extends FragmentActivity {
         mPager = (ViewPager) findViewById(R.id.battery_level_pager);
         mPagerAdapter = new SlidePagerAdapter(getSupportFragmentManager());
         mPager.setAdapter(mPagerAdapter);
-        mPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
-            @Override
-            public void onPageSelected(int position) {
-                // When changing pages, reset the action bar actions since they are dependent
-                // on which page is currently active. An alternative approach is to have each
-                // fragment expose actions itself (rather than the activity exposing actions),
-                // but for simplicity, the activity provides the actions in this sample.
-                supportInvalidateOptionsMenu();
-                Log.e("position", position + "");
-            }
-        });
+        mIndicator = (CirclePageIndicator)findViewById(R.id.indicator);
+        mIndicator.setViewPager(mPager);
+        mIndicator.setCurrentItem(mPagerAdapter.getCount() - 1);
+
         mPager.setCurrentItem(2);
     }
 
