@@ -1,14 +1,12 @@
 package cn.edu.pkusz.battery.db;
 
-import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.provider.BaseColumns;
-
 import java.util.HashMap;
 import java.util.Map;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.provider.BaseColumns;
 import cn.edu.pkusz.battery.common.Constants;
 import cn.edu.pkusz.battery.network.TrafficInfo;
 
@@ -84,7 +82,7 @@ public class TrafficTable {
                 + COLUMN_PACKAGE_NAME + ","
                 + COLUMN_APP_NAME + ","
                 + COLUMN_NETWORK_TYPE, null);
-        Map<String, TrafficInfo> map = new HashMap<>();
+        Map<String, TrafficInfo> map = new HashMap<String, TrafficInfo>();
         while (c.moveToNext()) {
             String packageName = c.getString(0);
             TrafficInfo item = null;

@@ -1,17 +1,20 @@
 package cn.edu.pkusz.battery.fragment;
 
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-
 import cn.edu.pkusz.battery.R;
+import cn.edu.pkusz.battery.activity.BatteryInfoActivity;
 import cn.edu.pkusz.battery.circleprogress.DonutProgress;
-import cn.edu.pkusz.battery.BatteryInfoActivity;
 import cn.edu.pkusz.battery.power.BatteryStatus;
 
 
@@ -23,7 +26,10 @@ public class TabFragment_1 extends Fragment {
     private View view;
     private DonutProgress donutProgress;
     private LinearLayout mBatteryInfo;
+    private BatteryReceiver tReceiver;
     private boolean visibleFlag = true;
+    private Thread thread=null;
+    private int batteryLevel = 0;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -36,6 +42,19 @@ public class TabFragment_1 extends Fragment {
                 startActivity(intent);
             }
         });
+        donutProgress = (DonutProgress) view.findViewById(R.id.donut_progress);
+        // 注册BatteryReceiver
+        tReceiver = new BatteryReceiver();
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(Intent.ACTION_BATTERY_CHANGED);
+        filter.addAction(Intent.ACTION_BATTERY_LOW);
+        filter.addAction(Intent.ACTION_POWER_CONNECTED);
+        filter.addAction(Intent.ACTION_POWER_DISCONNECTED);
+        getActivity().registerReceiver(tReceiver, filter);
+
+        //获取初始化的电池电量
+        this.batteryLevel = (int) (BatteryStatus.getBatteryLevel() * 100);
+
         return view;
     }
 
@@ -43,7 +62,7 @@ public class TabFragment_1 extends Fragment {
     public void onResume() {
         super.onResume();
         visibleFlag = true;
-        showLevelCircleProgress();
+        setProgress(batteryLevel);
     }
 
     @Override
@@ -60,7 +79,7 @@ public class TabFragment_1 extends Fragment {
         super.onHiddenChanged(hidden);
         if (this.isVisible()) {
             visibleFlag = true;
-            showLevelCircleProgress();
+            setProgress(batteryLevel);
         }else {
             visibleFlag = false;
         }
@@ -69,42 +88,56 @@ public class TabFragment_1 extends Fragment {
     /**
     显示电量环形进度条, 如果电量低于 {@link #LOW_POWER_LIMIT}
      */
-    public void  showLevelCircleProgress() {
-        if (donutProgress == null) {
-            donutProgress = (DonutProgress) getActivity().findViewById(R.id.donut_progress);
-        }
-        final int level = (int) (BatteryStatus.getBatteryLevel() * 100);
-        if (level <= LOW_POWER_LIMIT) {
-            donutProgress.setProgress(level);
+    public synchronized void setProgress(int batteryLevel) {
+        if (thread != null && thread.isAlive()) {
             return;
         }
+        this.batteryLevel = batteryLevel;
+        final int level = this.batteryLevel;
+
         donutProgress.setProgress(0);
-        new Thread(new Runnable() {
+        thread = new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
                     int progress = 0;
                     Thread.sleep(500);
-                    while (progress < level && visibleFlag==true) {
-                        progress += 1;
+                    while (progress <= level && visibleFlag==true) {
+                        final int finalProgress = progress;
                         getActivity().runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                donutProgress.setProgress(donutProgress.getProgress() + 1);
+                                donutProgress.setProgress(finalProgress);
                             }
                         });
                         Thread.sleep(10);
+                        progress += 1;
                     }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
-        }).start();
+        });
+        thread.start();
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         // TODO Auto-generated method stub
         super.onActivityCreated(savedInstanceState);
+    }
+
+    class BatteryReceiver extends BroadcastReceiver {
+        private final String TAG = BatteryReceiver.class.getSimpleName();
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Log.e(TAG, "充电状态改变");
+            //获取当前电量
+            int level = intent.getIntExtra("level", 0);
+            int scale = intent.getIntExtra("scale", 100);
+            int batteryLevel = (int) ((level / (float) scale) * 100);
+            setProgress(batteryLevel);
+        }
     }
 }

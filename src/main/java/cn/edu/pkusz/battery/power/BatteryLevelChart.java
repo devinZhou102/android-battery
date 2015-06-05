@@ -14,7 +14,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Random;
 
-import cn.edu.pkusz.battery.BatteryInfoActivity;
+import cn.edu.pkusz.battery.activity.BatteryInfoActivity;
 import cn.edu.pkusz.battery.common.Constants;
 import cn.edu.pkusz.battery.common.Static;
 import cn.edu.pkusz.battery.db.BatteryLevelEntry;

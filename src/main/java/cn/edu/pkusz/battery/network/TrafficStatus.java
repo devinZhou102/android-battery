@@ -5,8 +5,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.TrafficStats;
 
-import cn.edu.pkusz.battery.GlobalApplication;
 import cn.edu.pkusz.battery.common.Constants;
+import cn.edu.pkusz.battery.common.GlobalApplication;
 
 /**
  * Created by 陶世博 on 2015/6/3.

@@ -2,41 +2,56 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.edu.pkusz.battery"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0">
 
     <uses-sdk
-        android:minSdkVersion="15"
-        android:targetSdkVersion="15" />
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
 
+    <!-- 添加uses-permission -->
+    <uses-permission android:name="android.permission.BATTERY_STATS" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.READ_SYNC_STATS" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
 
     <application
-        android:name=".GlobalApplication"
+        android:name="cn.edu.pkusz.battery.common.GlobalApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.Black.NoTitleBar" >
+        android:theme="@android:style/Theme.Black.NoTitleBar">
         <activity
-            android:name=".SplashActivity"
+            android:name="cn.edu.pkusz.battery.main.SplashActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen" >
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name="cn.edu.pkusz.battery.main.MainActivity"/>
         <activity
-            android:name=".BatteryInfoActivity"
-            android:label="@string/title_activity_battery_info" >
-        </activity>
+            android:name="cn.edu.pkusz.battery.activity.BatteryInfoActivity"
+            android:label="@string/title_activity_battery_info"/>
         <activity
-            android:name=".AppDetailActivity"
-            android:label="@string/title_activity_app_detail" >
-        </activity>
+            android:name="cn.edu.pkusz.battery.activity.AppDetailActivity"
+            android:label="@string/title_activity_app_detail"/>
+        <!-- 添加activity -->
+        <activity android:name="cn.edu.pkusz.battery.activity.TabFragment_1_1" />
+        <activity android:name="cn.edu.pkusz.battery.activity.TabFragment_3_1" />
+        <activity android:name="cn.edu.pkusz.battery.activity.TabFragment_3_2" />
+        <activity android:name="cn.edu.pkusz.battery.activity.TabFragment_3_3" />
 
-        <service android:name=".service.TimerService" />
+        <service android:name="cn.edu.pkusz.battery.service.TimerService" />
     </application>
 
 </manifest>

@@ -6,20 +6,74 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="cn.edu.pkusz.battery.AppDetailActivity">
+    tools:context="cn.edu.pkusz.battery.activity.AppDetailActivity">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="#ff006318">
 
-        <TextView
-            android:id="@+id/textView"
+       <ImageView
+        android:id="@+id/Icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_vertical|left"
+        android:layout_margin="5dp"
+        android:src="@drawable/ic_launcher" />
+    
+    <TextView
+        android:id="@+id/Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/Icon"
+        android:gravity="center"
+        android:text="@string/power_cell"
+        android:textColor="@android:color/white" />
+    
+     <TextView
+            android:id="@+id/txtHaodian"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="此处包含卸载和详情按钮" />
-    </LinearLayout>
+            android:text="耗电："
+            android:layout_below="@id/Name"
+            android:layout_toRightOf="@id/Icon"
+            android:layout_alignBottom="@id/Icon"
+            android:textColor="@android:color/white" 
+            android:gravity="center"
+            />
+     
+      <TextView
+            android:id="@+id/txtRate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/power_cell"
+            android:layout_below="@id/Name"
+            android:layout_toRightOf="@id/txtHaodian"
+            android:layout_alignBottom="@id/txtHaodian"
+            android:textColor="@android:color/white" 
+            android:gravity="center"
+            />		
+    <Button 
+        android:id="@+id/uninstall"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@android:color/holo_red_dark"
+        android:layout_below="@id/Icon"
+        android:layout_marginLeft="20dp"
+        android:text="卸载"
+        />
+      <Button 
+        android:id="@+id/shutdown"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@android:color/holo_green_dark"
+        android:layout_below="@id/Icon"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20dp"
+        android:text="关闭"
+        />
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -56,9 +110,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/default_cpu_amount" />
 
-                <android.support.v4.widget.Space
-                    android:layout_width="2dp"
-                    android:layout_height="match_parent" />
+                
 
                 <TextView
                     android:id="@+id/textView3"
@@ -102,10 +154,7 @@
                         android:layout_gravity="center"
                         android:text="@string/upload" />
 
-                    <android.support.v4.widget.Space
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent" />
-
+                   
                     <TextView
                         android:id="@+id/traffic_mount_upload"
                         android:layout_width="wrap_content"
@@ -113,9 +162,6 @@
                         android:layout_gravity="center"
                         android:text="@string/defaultTrafficAmount" />
 
-                    <android.support.v4.widget.Space
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent" />
 
                     <TextView
                         android:id="@+id/textView12"
@@ -139,10 +185,6 @@
                         android:layout_gravity="center"
                         android:text="@string/download" />
 
-                    <android.support.v4.widget.Space
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent" />
-
                     <TextView
                         android:id="@+id/traffic_mount_download"
                         android:layout_width="wrap_content"
@@ -150,9 +192,7 @@
                         android:layout_gravity="center"
                         android:text="@string/defaultTrafficAmount" />
 
-                    <android.support.v4.widget.Space
-                        android:layout_width="2dp"
-                        android:layout_height="match_parent" />
+                  
 
                     <TextView
                         android:id="@+id/textView13"

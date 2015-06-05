@@ -1,37 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:background="@drawable/body_background"
+    android:gravity="center_horizontal"
     android:orientation="vertical" >
-
+    
     <RelativeLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/title_bg"
         android:orientation="horizontal" >
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/XinTextView0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:padding="10dp"
             android:text="省电模式"
             android:textColor="@android:color/white"
-            android:textSize="20sp" />
-
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:padding="10dp"
-            android:src="@drawable/ic_btn_refresh_normal" />
+            android:textSize="30sp" />
+        
     </RelativeLayout>
-
+    
     <ImageView
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:src="@android:color/background_dark" />
 
+	    <Button
+	        android:id="@+id/XinButton1"
+	        android:layout_width="160dp"
+	        android:layout_height="40dp"
+			android:layout_marginTop="20dp"
+	        android:background="@android:color/holo_green_dark"
+	        android:text="当前模式"
+	        android:textColor="@android:color/white"
+	        android:textSize="40px" />
+	    
+	    <Button
+	        android:id="@+id/XinButton2"
+	        android:layout_width="160dp"
+	        android:layout_height="40dp"
+	        android:layout_marginTop="20dp"
+	        android:background="@android:color/holo_green_dark"
+	        android:text="超级省电"
+	        android:textColor="@android:color/white"
+	        android:textSize="40px" />
+	    
+	    <Button
+	        android:id="@+id/XinButton3"
+	        android:layout_width="160dp"
+	        android:layout_height="40dp"
+	        android:layout_marginTop="20dp"
+	        android:background="@android:color/holo_green_dark"
+	        android:text="自定义模式"
+	        android:textColor="@android:color/white"
+	        android:textSize="40px" />
+	   
+		
+
+        <Button
+	        android:id="@+id/XinButton10"
+	        android:layout_width="160dp"
+	        android:layout_height="40dp"
+	        android:layout_marginTop="250dp"
+	        android:background="@android:color/holo_green_dark"
+	        android:text="添加自定义模式"
+	        android:textColor="@android:color/white"
+	        android:textSize="40px" />
+
+
+	    
+
+	    
 </LinearLayout>

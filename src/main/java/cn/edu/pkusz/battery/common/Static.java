@@ -4,7 +4,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-import cn.edu.pkusz.battery.GlobalApplication;
 import cn.edu.pkusz.battery.db.DbManager;
 
 /**

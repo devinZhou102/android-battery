@@ -2,11 +2,12 @@ package cn.edu.pkusz.battery.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.List;
 import java.util.Map;
 
-import cn.edu.pkusz.battery.GlobalApplication;
+import cn.edu.pkusz.battery.common.GlobalApplication;
 import cn.edu.pkusz.battery.network.TrafficInfo;
 
 /**
@@ -18,7 +19,8 @@ public class DbManager {
     private SQLiteDatabase rDb;
 
     public DbManager(Context context) {
-        dbHelper = new DbHelper(GlobalApplication.getContext());
+    	Log.e("context", String.valueOf(GlobalApplication.getContext()));
+    	dbHelper = new DbHelper(GlobalApplication.getContext());
         wDb = dbHelper.getWritableDatabase();
         rDb = dbHelper.getReadableDatabase();
     }

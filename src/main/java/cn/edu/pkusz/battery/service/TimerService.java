@@ -43,6 +43,7 @@ public class TimerService extends Service{
             // 添加具体需要做的事情
             //采集电池电量信息
             collectBatteryLevel();
+            
             //采集网络流量信息
             handler.postDelayed(mTasks, getInterval());
         }
@@ -120,7 +121,7 @@ public class TimerService extends Service{
     public void onDestroy() {
         Log.d(TAG, "onDestroy");
         unregisterReceiver(tReceiver);
-        collectTrafficAmount();
+//        collectTrafficAmount();
         dbManager.close();
         handler.removeCallbacks(mTasks);
         super.onDestroy();
@@ -131,7 +132,7 @@ public class TimerService extends Service{
         @Override
         public void onReceive(Context context, Intent intent) {
             Log.e(TAG, "网络状态改变");
-            collectTrafficAmount();
+//            collectTrafficAmount();
         }
     }
 }
