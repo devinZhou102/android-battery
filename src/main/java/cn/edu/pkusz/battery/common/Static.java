@@ -12,7 +12,8 @@ import cn.edu.pkusz.battery.db.DbManager;
 public class Static {
     private static DbManager dbManager = null;
     private static GregorianCalendar calendar = null;
-    private static SimpleDateFormat dateFormat = null;
+    private static SimpleDateFormat dateFormatLong = null;
+    private static SimpleDateFormat dateFormatShort = null;
 
     public static Calendar getCalendar() {
         if (calendar == null) {
@@ -21,11 +22,17 @@ public class Static {
         return calendar;
     }
 
-    public static SimpleDateFormat getDateFormat() {
-        if (dateFormat == null) {
-            dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+    public static SimpleDateFormat getDateFormatLong() {
+        if (dateFormatLong == null) {
+            dateFormatLong = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         }
-        return dateFormat;
+        return dateFormatLong;
+    }
+    public static SimpleDateFormat getDateFormatShort() {
+        if (dateFormatShort == null) {
+            dateFormatShort = new SimpleDateFormat("yyyy-MM-dd");
+        }
+        return dateFormatShort;
     }
 
     public static DbManager getDbManager() {

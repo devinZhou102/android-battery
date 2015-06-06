@@ -87,7 +87,7 @@ public class BatteryTable
         if (count > 0) {
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
-                Log.e("data", Static.getDateFormat().format(new Date(cursor.getLong(0))) + "   " + cursor.getFloat(1));
+                Log.e("data", Static.getDateFormatLong().format(new Date(cursor.getLong(0))) + "   " + cursor.getFloat(1));
                 cursor.moveToNext();
             }
         }

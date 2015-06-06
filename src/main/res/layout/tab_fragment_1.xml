@@ -3,76 +3,156 @@
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/body_background"
+    android:background="@color/deep_blue_background"
     android:orientation="vertical"
     android:weightSum="1">
 
+
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/title_bg"
-        android:orientation="horizontal" >
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp">
 
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:src="@drawable/ic_btn_set" />
+        <cn.edu.pkusz.battery.circleprogress.DonutProgress
+            android:id="@+id/donut_progress"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            custom:donut_background_color="@color/deep_blue_important"
+            custom:donut_inner_bottom_text="电量"
+            custom:donut_inner_bottom_text_color="#FFFFFF"
+            custom:donut_inner_bottom_text_size="15dp"
+            custom:donut_progress="70"
+            custom:donut_text_color="#FFFFFF"
+            custom:donut_text_size="35dp"
+            custom:donut_finished_color="@color/level_green"
+            custom:donut_finished_stroke_width="10dp"
+            custom:donut_unfinished_stroke_width="10dp" />
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="0dip"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_weight="1.0"
-            android:gravity="center"
-            android:text="金山电池医生"
-            android:textColor="@android:color/white"
-            android:textSize="20sp" />
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:src="@drawable/ic_btn_message" />
     </LinearLayout>
 
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="0.5dp"
-        android:src="@android:color/background_dark" />
-
-    <cn.edu.pkusz.battery.circleprogress.DonutProgress
-        android:id="@+id/donut_progress"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+    <LinearLayout
+        android:background="@color/deep_blue_important"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
-        custom:donut_inner_bottom_text="电量"
-        custom:donut_inner_bottom_text_color="#FFFFFF"
-        custom:donut_inner_bottom_text_size="15dp"
-        custom:donut_progress="70"
-        custom:donut_text_color="#FFFFFF"
-        custom:donut_text_size="35dp"
-        custom:donut_finished_color="#ff00bb00"
-        custom:donut_finished_stroke_width="15dp"
-        custom:donut_unfinished_stroke_width="10dp" />
+        android:layout_marginRight="10dp">
+
+        <TextView
+            android:textColor="@android:color/darker_gray"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/battery_available_time"
+            android:id="@+id/textView"
+            android:layout_marginRight="2dp"
+            android:textSize="15dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:id="@+id/available_time"
+            android:textSize="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp" />
+    </LinearLayout>
 
     <LinearLayout
+        android:background="@color/deep_blue_important"
         android:id="@+id/battery_info"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:background="#ff858585"
-        android:layout_weight="0.11">
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
-        <TextView
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="电池信息"
-             />
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 ℃"
+                android:id="@+id/battery_temperature"
+                android:textSize="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp" />
+
+            <TextView
+                android:textColor="@android:color/darker_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/battery_temperature"
+                android:id="@+id/textView7"
+                android:textSize="10dp"
+                android:layout_marginBottom="15dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 V"
+                android:id="@+id/battery_voltage"
+                android:textSize="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp" />
+
+            <TextView
+                android:textColor="@android:color/darker_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/battery_voltage"
+                android:id="@+id/textView9"
+                android:textSize="10dp"
+                android:layout_marginBottom="15dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|right"
+            android:layout_weight="1"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Li-ion"
+                android:id="@+id/battery_craft"
+                android:textSize="20dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp" />
+
+            <TextView
+                android:textColor="@android:color/darker_gray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/battery_craft"
+                android:id="@+id/textView14"
+                android:textSize="10dp"
+                android:layout_marginBottom="15dp" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

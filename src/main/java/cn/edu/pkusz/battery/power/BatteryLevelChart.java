@@ -1,5 +1,6 @@
 package cn.edu.pkusz.battery.power;
 
+import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.Paint;
 
@@ -14,6 +15,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Random;
 
+import cn.edu.pkusz.battery.R;
 import cn.edu.pkusz.battery.activity.BatteryInfoActivity;
 import cn.edu.pkusz.battery.common.Constants;
 import cn.edu.pkusz.battery.common.Static;
@@ -44,7 +46,7 @@ public class BatteryLevelChart {
         mRenderer.setXLabels(0);
         setXTextLabel(mRenderer);
         mRenderer.setYLabels(0);
-        mRenderer.addYTextLabel(20,"20");
+        mRenderer.addYTextLabel(20, "20");
         mRenderer.addYTextLabel(40, "40");
         mRenderer.addYTextLabel(60, "60");
         mRenderer.addYTextLabel(80, "80");
@@ -60,7 +62,9 @@ public class BatteryLevelChart {
         //不可点击
         mRenderer.setClickEnabled(false);
         mRenderer.setApplyBackgroundColor(true);
-        mRenderer.setBackgroundColor(Color.DKGRAY);
+        mRenderer.setBackgroundColor(Color.argb(255, 47, 54, 62));
+        mRenderer.setMarginsColor(Color.argb(255,39,44,50));
+        mRenderer.setBackgroundColor(Color.TRANSPARENT);
         mRenderer.setPointSize(5f);
         //不显示legend(坐标轴的说明文字)
         mRenderer.setShowLegend(false);

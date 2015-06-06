@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="deep_blue_background">#ff2f363e</color>
+    <color name="deep_blue_important">#ff272c32</color>
+    <color name="gray">#888</color>
+    <color name="white">#FFF</color>
+    <color name="level_green">#ff1ac616</color>
+    <color name="deep_blue_even">#ff2f363e</color>
+    <color name="deep_blue_odd">#ff3e424b</color>
+</resources>

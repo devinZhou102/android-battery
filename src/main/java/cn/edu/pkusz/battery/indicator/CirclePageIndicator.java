@@ -32,10 +32,14 @@ import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.ViewConfigurationCompat;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
+import android.widget.TextView;
+
 import cn.edu.pkusz.battery.R;
+import cn.edu.pkusz.battery.activity.BatteryInfoActivity;
 
 /**
  * Draws circles (one for each view). The current view position is filled and
@@ -429,6 +433,7 @@ public class CirclePageIndicator extends View implements PageIndicator {
         if (mListener != null) {
             mListener.onPageSelected(position);
         }
+        BatteryInfoActivity.setDate(position);
     }
 
     @Override

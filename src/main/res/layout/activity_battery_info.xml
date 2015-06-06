@@ -1,237 +1,269 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="5dp"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:background="@color/deep_blue_background"
+    >
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/battery_level_status"
-        android:layout_gravity="center_horizontal|left" />
-
-    <android.support.v4.view.ViewPager
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/battery_level_pager"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:padding="2dp"
-        android:background="#ff0058c5"
-         />
-    <cn.edu.pkusz.battery.indicator.CirclePageIndicator
-        android:id="@+id/indicator"
-        android:padding="5dp"
-        android:layout_height="wrap_content"
-        android:layout_width="fill_parent"
-        android:background="#ff3c3c3c"
-        custom:fillColor="#ffeeeeee"
-        custom:pageColor="#88FF0000"
-        custom:strokeColor="#ff0058c5"
-        custom:strokeWidth="1dp"
-        custom:radius="5dp"
-        custom:centered="true"
-        />
 
     <LinearLayout
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:background="#ff312c2f">
-    <!-- 添加 -->
-    <LinearLayout 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical" >
-        
-        
-        <RelativeLayout 
-            android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:padding="8dp"
-	        android:orientation="horizontal" >
-			<TextView
-			    android:id="@+id/XinTextView3"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentLeft="true"
-			    android:layout_marginLeft="40dp"
-			    android:text="健康状况"
-			    android:textColor="@android:color/white"
-			    android:textSize="25sp" />
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
 
-			<TextView
-			    android:id="@+id/TV1"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentRight="true"
-			    android:layout_alignParentTop="true"
-			    android:textSize="25sp"
-			    android:layout_marginRight="40dp" />
-        </RelativeLayout>
-        
-        <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:src="@android:color/background_dark" />
-        
-        <RelativeLayout 
-            android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:padding="8dp"
-	        android:orientation="horizontal" >
-			<TextView
-			    android:id="@+id/XinTextView4"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentLeft="true"
-			    android:layout_marginLeft="40dp"
-			    android:text="最大电量"
-			    android:textColor="@android:color/white"
-			    android:textSize="25sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|left"
+            android:text="@string/battery_level_status" />
 
-			<TextView
-			    android:id="@+id/TV2"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentRight="true"
-			    android:layout_alignParentTop="true"
-			    android:textSize="25sp"
-			    android:layout_marginRight="40dp" />
-        </RelativeLayout>
-        
-        <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:src="@android:color/background_dark" />
-        
-        <RelativeLayout 
-            android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:padding="8dp"
-	        android:orientation="horizontal" >
-			<TextView
-			    android:id="@+id/XinTextView5"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentLeft="true"
-			    android:layout_marginLeft="40dp"
-			    android:text="当前电量"
-			    android:textColor="@android:color/white"
-			    android:textSize="25sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:id="@+id/battery_level_date"
+            android:layout_gravity="center_horizontal" />
 
-			<TextView
-			    android:id="@+id/TV3"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentRight="true"
-			    android:layout_alignParentTop="true"
-			    android:textSize="25sp"
-			    android:layout_marginRight="40dp" />
-        </RelativeLayout>
-		
-        <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:src="@android:color/background_dark" />
-        
-        <RelativeLayout 
-            android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:padding="8dp"
-	        android:orientation="horizontal" >
-			<TextView
-			    android:id="@+id/XinTextView6"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentLeft="true"
-			    android:layout_marginLeft="40dp"
-			    android:text="电池温度"
-			    android:textColor="@android:color/white"
-			    android:textSize="25sp" />
-
-			<TextView
-			    android:id="@+id/TV4"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentRight="true"
-			    android:layout_alignParentTop="true"
-			    android:textSize="25sp"
-			    android:layout_marginRight="40dp" />
-        </RelativeLayout>
-        
-        <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:src="@android:color/background_dark" />
-        
-        <RelativeLayout 
-            android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:padding="8dp"
-	        android:orientation="horizontal" >
-			<TextView
-			    android:id="@+id/XinTextView7"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentLeft="true"
-			    android:layout_marginLeft="40dp"
-			    android:text="电池电压"
-			    android:textColor="@android:color/white"
-			    android:textSize="25sp" />
-
-			<TextView
-			    android:id="@+id/TV5"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentRight="true"
-			    android:layout_alignParentTop="true"
-			    android:textSize="25sp"
-			    android:layout_marginRight="40dp" />
-        </RelativeLayout>
-        
-        <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:src="@android:color/background_dark" />
-        
-        <RelativeLayout 
-            android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:padding="8dp"
-	        android:orientation="horizontal" >
-			<TextView
-			    android:id="@+id/XinTextView8"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentLeft="true"
-			    android:layout_marginLeft="40dp"
-			    android:text="电池工艺"
-			    android:textColor="@android:color/white"
-			    android:textSize="25sp" />
-
-			<TextView
-			    android:id="@+id/TV6"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentRight="true"
-			    android:layout_alignParentTop="true"
-			    android:textSize="25sp"
-			    android:layout_marginRight="40dp" />
-        </RelativeLayout>
-
-		<ImageView
-	        android:layout_width="match_parent"
-	        android:layout_height="0.5dp"
-	        android:src="@android:color/background_dark" />
-
-   	</LinearLayout>
-    <!-- 添加 -->
     </LinearLayout>
+
+    <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/battery_level_pager"
+        android:background="@color/deep_blue_background"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+    <cn.edu.pkusz.battery.indicator.CirclePageIndicator
+        android:id="@+id/indicator"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/deep_blue_important"
+        android:padding="0dp"
+        custom:centered="true"
+        custom:fillColor="@color/white"
+        custom:pageColor="@color/gray"
+        custom:radius="3dp"
+        custom:strokeColor="@color/deep_blue_background"
+        custom:strokeWidth="1dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp" />
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+                android:background="@color/deep_blue_even"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView"
+                    android:src="@mipmap/ic_battery_health"
+                     />
+
+                <TextView
+                    android:id="@+id/XinTextView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/battery_health"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:text="@string/unknown"
+                    android:id="@+id/battery_health"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:gravity="right"
+                    android:textColor="@android:color/darker_gray"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/deep_blue_odd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView2"
+                    android:src="@mipmap/ic_battery_full"/>
+
+                <TextView
+                    android:id="@+id/XinTextView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/battery_scale"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:text="@string/unknown"
+                    android:id="@+id/battery_scale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:layout_weight="1"
+                    android:textColor="@android:color/darker_gray"
+                    android:gravity="right" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:background="@color/deep_blue_even"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView3"
+                    android:src="@mipmap/ic_battery_half"/>
+
+                <TextView
+                    android:id="@+id/XinTextView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/battery_level"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:text="@string/unknown"
+                    android:id="@+id/battery_level"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:layout_weight="1"
+                    android:textColor="@android:color/darker_gray"
+                    android:gravity="right" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/deep_blue_odd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView4"
+                    android:src="@mipmap/ic_temperature"/>
+
+                <TextView
+                    android:id="@+id/XinTextView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/battery_temperature"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:text="@string/unknown"
+                    android:id="@+id/battery_temperature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:gravity="right"
+                    android:textColor="@android:color/darker_gray"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/deep_blue_even"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView5"
+                    android:src="@mipmap/ic_battery_voltage"/>
+
+                <TextView
+                    android:id="@+id/XinTextView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/battery_voltage"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:text="@string/unknown"
+                    android:id="@+id/battery_voltage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15sp"
+                    android:gravity="right"
+                    android:textColor="@android:color/darker_gray"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:background="@color/deep_blue_odd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/imageView6"
+                    android:src="@mipmap/ic_battery_craft"/>
+
+                <TextView
+                    android:id="@+id/XinTextView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/battery_craft"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:text="@string/unknown"
+                    android:id="@+id/battery_craft"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:textSize="15sp"
+                    android:gravity="right"
+                    android:textColor="@android:color/darker_gray"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>
 
