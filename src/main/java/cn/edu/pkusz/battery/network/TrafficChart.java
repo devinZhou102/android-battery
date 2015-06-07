@@ -40,11 +40,11 @@ public class TrafficChart {
         mRenderer.addXTextLabel(109, "12:00");
         mRenderer.addXTextLabel(144, "18:00");
         mRenderer.setYLabels(0);
-        mRenderer.addYTextLabel(20, "20");
-        mRenderer.addYTextLabel(40, "40");
-        mRenderer.addYTextLabel(60, "60");
-        mRenderer.addYTextLabel(80, "80");
-        mRenderer.addYTextLabel(100, "100");
+        mRenderer.addYTextLabel(20, "");
+        mRenderer.addYTextLabel(40, "");
+        mRenderer.addYTextLabel(60, "");
+        mRenderer.addYTextLabel(80, "");
+        mRenderer.addYTextLabel(100, "");
         mRenderer.setShowGrid(true);
         //当自定义坐标轴标签时使用该方法可以显示网格
         mRenderer.setShowCustomTextGrid(true);
@@ -57,7 +57,8 @@ public class TrafficChart {
         mRenderer.setClickEnabled(true);
         mRenderer.setSelectableBuffer(2);
         mRenderer.setApplyBackgroundColor(true);
-        mRenderer.setBackgroundColor(Color.DKGRAY);
+        mRenderer.setBackgroundColor(Color.argb(255, 47, 54, 62));
+        mRenderer.setMarginsColor(Color.argb(255, 39, 44, 50));
         mRenderer.setBarWidth(1.2f);
         mRenderer.setBarSpacing(0.5f);
         //不显示legend(坐标轴的说明文字)

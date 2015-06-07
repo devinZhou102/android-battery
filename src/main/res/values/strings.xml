@@ -59,5 +59,12 @@
     <string name="battery_level">当前电量</string>
     <string name="battery_health">健康状况</string>
     <string name="unknown">未知</string>
+    <string name="power_rank">近24小时应用耗电情况</string>
+    <string name="application_name">应用名称</string>
+    <string name="power_consume_default_value">1%</string>
+    <string name="power_consume">耗电</string>
+    <string name="shutdown">关闭</string>
+    <string name="check">查看</string>
+    <string name="consume_detail">耗电详情:</string>
 
 </resources>

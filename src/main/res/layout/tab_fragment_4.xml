@@ -2,61 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/body_background"
-    android:orientation="vertical" >
+    android:background="@color/deep_blue_background"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/title_bg"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="耗电排行"
-            android:textColor="@android:color/white"
-            android:textSize="20sp" />
-
-        <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:padding="10dp"
-            android:src="@drawable/ic_btn_refresh_normal"
-            android:visibility="invisible" />
-    </RelativeLayout>
-
-     <TextView 
+    <TextView
+        android:background="@color/deep_blue_hint"
         android:id="@+id/batterySummary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white"/>
-    
-   <ListView
-       android:id="@+id/listview"
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:cacheColorHint="#00000000"
-       android:scrollbars="none" 
-       android:divider="#cccccc"        
-	   android:dividerHeight="1dp"   
-       />
-  <!--   <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="0.5dp"
-        android:src="@android:color/background_dark" />
+        android:text="@string/power_rank"
+        android:textColor="@android:color/white" />
 
     <ListView
-        android:id="@+id/appList"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" 
-        android:layout_marginBottom="69dp"
-        android:visibility="gone"/> -->
-        
-      <!--   <include layout="@layout/tab_fragment4_layout" /> -->
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="#00000000"
+        android:divider="@color/deep_blue_important"
+        android:dividerHeight="1dp"
+        android:scrollbars="none" />
 
 </LinearLayout>

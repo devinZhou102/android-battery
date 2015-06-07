@@ -7,4 +7,9 @@
     <color name="level_green">#ff1ac616</color>
     <color name="deep_blue_even">#ff2f363e</color>
     <color name="deep_blue_odd">#ff3e424b</color>
+    <color name="deep_blue_hint">#ff383f47</color>
+    <color name="light_green">#ff00c800</color>
+    <color name="deep_green">#ff2a8e59</color>
+    <color name="uninstall_red">#ffaf3635</color>
+    <color name="shutdown_green">#ff36b431</color>
 </resources>

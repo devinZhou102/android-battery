@@ -64,7 +64,6 @@ public class BatteryLevelChart {
         mRenderer.setApplyBackgroundColor(true);
         mRenderer.setBackgroundColor(Color.argb(255, 47, 54, 62));
         mRenderer.setMarginsColor(Color.argb(255,39,44,50));
-        mRenderer.setBackgroundColor(Color.TRANSPARENT);
         mRenderer.setPointSize(5f);
         //不显示legend(坐标轴的说明文字)
         mRenderer.setShowLegend(false);

@@ -3,7 +3,7 @@
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/body_background"
+    android:background="@color/deep_blue_background"
     android:orientation="vertical"
     android:weightSum="1">
 
@@ -13,19 +13,16 @@
         android:layout_gravity="center"
         android:layout_weight="0.47"
         android:gravity="center_vertical|center_horizontal"
-        android:weightSum="1"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp">
-
+        >
         <cn.edu.pkusz.battery.circleprogress.CircleProgress
             android:id="@+id/circle_progress"
-            android:layout_width="150dp"
-            android:layout_height="match_parent"
-            custom:circle_progress="50"
-            android:layout_weight="0.33" />
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            custom:circle_progress="50" />
     </LinearLayout>
 
     <LinearLayout
+        android:background="@color/deep_blue_important"
         android:layout_width="match_parent"
         android:layout_height="34dp"
         android:layout_weight="0.21"
@@ -33,10 +30,11 @@
         android:gravity="center_vertical|center_horizontal">
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="@string/nocharging"
             android:id="@+id/charging_status"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:gravity="center" />
     </LinearLayout>
 
 </LinearLayout>
