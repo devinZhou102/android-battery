@@ -3,6 +3,7 @@ package cn.edu.pkusz.battery.fragment;
 
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
+import org.achartengine.chart.BarChart;
 import org.achartengine.model.XYMultipleSeriesDataset;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 
@@ -56,7 +57,8 @@ public class SlidePageFragment extends Fragment {
         super.onResume();
         if (mChartView == null) {
             LinearLayout layout = (LinearLayout) rootView.findViewById(R.id.battery_level_chart);
-            mChartView = ChartFactory.getLineChartView(getActivity(), mDataset, mRenderer);
+//            mChartView = ChartFactory.getLineChartView(getActivity(), mDataset, mRenderer);
+            mChartView = ChartFactory.getBarChartView(getActivity(), mDataset, mRenderer,BarChart.Type.DEFAULT);
             layout.addView(mChartView, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.MATCH_PARENT));
         }

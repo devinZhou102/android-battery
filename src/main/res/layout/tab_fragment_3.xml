@@ -5,74 +5,79 @@
     android:background="@drawable/body_background"
     android:gravity="center_horizontal"
     android:orientation="vertical" >
-    
+
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/title_bg"
-        android:orientation="horizontal" >
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:padding="10dp" >
 
-        <TextView
-            android:id="@+id/XinTextView0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:padding="10dp"
-            android:text="省电模式"
+        <Button
+            android:id="@+id/XinButton1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/body_background"
+            android:text="当前模式"
             android:textColor="@android:color/white"
-            android:textSize="30sp" />
-        
+            android:textSize="40px" />
     </RelativeLayout>
-    
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:src="@android:color/background_dark" />
 
-	    <Button
-	        android:id="@+id/XinButton1"
-	        android:layout_width="160dp"
-	        android:layout_height="40dp"
-			android:layout_marginTop="20dp"
-	        android:background="@android:color/holo_green_dark"
-	        android:text="当前模式"
-	        android:textColor="@android:color/white"
-	        android:textSize="40px" />
-	    
-	    <Button
-	        android:id="@+id/XinButton2"
-	        android:layout_width="160dp"
-	        android:layout_height="40dp"
-	        android:layout_marginTop="20dp"
-	        android:background="@android:color/holo_green_dark"
-	        android:text="超级省电"
-	        android:textColor="@android:color/white"
-	        android:textSize="40px" />
-	    
-	    <Button
-	        android:id="@+id/XinButton3"
-	        android:layout_width="160dp"
-	        android:layout_height="40dp"
-	        android:layout_marginTop="20dp"
-	        android:background="@android:color/holo_green_dark"
-	        android:text="自定义模式"
-	        android:textColor="@android:color/white"
-	        android:textSize="40px" />
-	   
-		
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:src="@android:color/background_dark" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:padding="10dp" >
 
         <Button
-	        android:id="@+id/XinButton10"
-	        android:layout_width="160dp"
-	        android:layout_height="40dp"
-	        android:layout_marginTop="250dp"
-	        android:background="@android:color/holo_green_dark"
-	        android:text="添加自定义模式"
-	        android:textColor="@android:color/white"
-	        android:textSize="40px" />
+            android:id="@+id/XinButton2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/body_background"
+            android:text="超级省电"
+            android:textColor="@android:color/white"
+            android:textSize="40px" />
+    </RelativeLayout>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:src="@android:color/background_dark" />
 
-	    
+    <RelativeLayout
+        android:layout_width="match_parent"
+    	android:layout_height="match_parent"    
+    	android:orientation="vertical" >
+	    <ListView
+	        android:id="@+id/listview1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:cacheColorHint="#00000000"
+	        android:layout_centerHorizontal="true"
+	        android:divider="@android:color/background_dark"
+	        android:dividerHeight="0px"
+	        android:fadingEdge="none"
+	        android:listSelector="#00000000"  > 
+	    </ListView>
+	
+	    <TextView
+	         android:id="@+id/textView"
+	         android:layout_width="wrap_content"
+	         android:layout_height="wrap_content"
+	         android:layout_centerHorizontal="true"
+	         android:layout_below="@+id/listview1"
+	         android:text="点击+号添加自定义模式"
+	         android:textSize="18dp" />
+    </RelativeLayout>
 
-	    
 </LinearLayout>

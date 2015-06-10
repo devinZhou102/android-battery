@@ -18,7 +18,6 @@ public class GlobalApplication extends Application{
     @Override
     public void onCreate() {
         //获取Context
-    	Log.e("context", "oncreate");
     	super.onCreate();
         context = getApplicationContext();
     }

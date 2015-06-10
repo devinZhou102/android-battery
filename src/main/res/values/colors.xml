@@ -12,4 +12,5 @@
     <color name="deep_green">#ff2a8e59</color>
     <color name="uninstall_red">#ffaf3635</color>
     <color name="shutdown_green">#ff36b431</color>
+    <color name="darker_gray">#ffbdbdbd</color>
 </resources>

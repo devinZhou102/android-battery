@@ -45,9 +45,16 @@ public class BatteryStatus {
     }
 
     public static float getBatteryLevel() {
-        Log.e("battery", "get level");
         int level = getIntent().getIntExtra(BatteryManager.EXTRA_LEVEL, -1);
         int scale = getIntent().getIntExtra(BatteryManager.EXTRA_SCALE, -1);
         return level / (float) scale;
+    }
+    public static int getBatteryVoltage()
+    {
+    	return getIntent().getIntExtra("voltage", 0);
+    }
+    public static int getBatteryTemperature()
+    {
+    	return getIntent().getIntExtra("temperature", 0);
     }
 }

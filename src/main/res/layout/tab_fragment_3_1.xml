@@ -6,28 +6,6 @@
     android:background="@drawable/body_background"
     android:orientation="vertical" >
     
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/title_bg"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:id="@+id/XinTextView0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:padding="20dp"
-            android:text="当前模式"
-            android:textColor="@android:color/white"
-            android:textSize="30sp" />
-        
-    </RelativeLayout>
-    
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:src="@android:color/background_dark" />
     
     <!-- 添加 -->
     <LinearLayout 

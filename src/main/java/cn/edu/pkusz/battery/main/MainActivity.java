@@ -1,15 +1,23 @@
 package cn.edu.pkusz.battery.main;
 
+import java.lang.reflect.Field;
+
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewConfiguration;
 import android.widget.ImageView;
 import android.widget.TextView;
 import cn.edu.pkusz.battery.R;
+import cn.edu.pkusz.battery.activity.AboutActivity;
 import cn.edu.pkusz.battery.fragment.TabFragment_1;
 import cn.edu.pkusz.battery.fragment.TabFragment_2;
 import cn.edu.pkusz.battery.fragment.TabFragment_3;
@@ -38,9 +46,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 	private TabFragment_2 tabFragment_2;
 	private TabFragment_3 tabFragment_3;
 	private TabFragment_4 tabFragment_4;
-	//private TabFragment_5 tabFragment_5;
+	// private TabFragment_5 tabFragment_5;
 	static boolean flag = false;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,6 +58,7 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		fragmentManager = getSupportFragmentManager();
 		// 第一次启动时选中第0个tab
 		setTabSelection(0);
+		getOverflowMenu();
 	}
 
 	private void setTabSelection(int index) {
@@ -114,9 +123,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 				// 如果Fragment不为空，则直接将它显示出来
 				transaction.show(tabFragment_4);
 			}
-//			Intent i = new Intent(this,Consumer.class);
-//			startActivity(i);
-//			finish();
+			// Intent i = new Intent(this,Consumer.class);
+			// startActivity(i);
+			// finish();
 			break;
 		default:
 			break;
@@ -179,10 +188,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 			setTabSelection(3);
 			break;
 		/*
-		case R.id.linearLayout_tab_5:
-			setTabSelection(4);
-			break;
-		*/
+		 * case R.id.linearLayout_tab_5: setTabSelection(4); break;
+		 */
 		default:
 			break;
 		}
@@ -193,31 +200,31 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		tab_view_2 = findViewById(R.id.linearLayout_tab_2);
 		tab_view_3 = findViewById(R.id.linearLayout_tab_3);
 		tab_view_4 = findViewById(R.id.linearLayout_tab_4);
-		//tab_view_5 = findViewById(R.id.linearLayout_tab_5);
+		// tab_view_5 = findViewById(R.id.linearLayout_tab_5);
 
 		tab_icon_1 = (ImageView) findViewById(R.id.tab_icon_1);
 		tab_icon_2 = (ImageView) findViewById(R.id.tab_icon_2);
 		tab_icon_3 = (ImageView) findViewById(R.id.tab_icon_3);
 		tab_icon_4 = (ImageView) findViewById(R.id.tab_icon_4);
-		//tab_icon_5 = (ImageView) findViewById(R.id.tab_icon_5);
+		// tab_icon_5 = (ImageView) findViewById(R.id.tab_icon_5);
 
 		tab_text_1 = (TextView) findViewById(R.id.tab_text_1);
 		tab_text_2 = (TextView) findViewById(R.id.tab_text_2);
 		tab_text_3 = (TextView) findViewById(R.id.tab_text_3);
 		tab_text_4 = (TextView) findViewById(R.id.tab_text_4);
-		//tab_text_5 = (TextView) findViewById(R.id.tab_text_5);
+		// tab_text_5 = (TextView) findViewById(R.id.tab_text_5);
 
 		tab_text_1.setTextColor(Color.GRAY);
 		tab_text_2.setTextColor(Color.GRAY);
 		tab_text_3.setTextColor(Color.GRAY);
 		tab_text_4.setTextColor(Color.GRAY);
-		//tab_text_5.setTextColor(Color.GRAY);
+		// tab_text_5.setTextColor(Color.GRAY);
 
 		tab_view_1.setOnClickListener(this);
 		tab_view_2.setOnClickListener(this);
 		tab_view_3.setOnClickListener(this);
 		tab_view_4.setOnClickListener(this);
-		//tab_view_5.setOnClickListener(this);
+		// tab_view_5.setOnClickListener(this);
 	}
 
 	/**
@@ -228,19 +235,62 @@ public class MainActivity extends FragmentActivity implements OnClickListener {
 		tab_view_2.setBackgroundResource(0);
 		tab_view_3.setBackgroundResource(0);
 		tab_view_4.setBackgroundResource(0);
-		//tab_view_5.setBackgroundResource(0);
+		// tab_view_5.setBackgroundResource(0);
 
 		tab_icon_1.setImageResource(R.drawable.battery_tab_icon01_normal);
 		tab_icon_2.setImageResource(R.drawable.battery_tab_icon02_normal);
 		tab_icon_3.setImageResource(R.drawable.battery_tab_icon03_normal);
 		tab_icon_4.setImageResource(R.drawable.battery_tab_icon04_normal);
-		//tab_icon_5.setImageResource(R.drawable.battery_tab_icon05_normal);
+		// tab_icon_5.setImageResource(R.drawable.battery_tab_icon05_normal);
 
 		tab_text_1.setTextColor(Color.GRAY);
 		tab_text_2.setTextColor(Color.GRAY);
 		tab_text_3.setTextColor(Color.GRAY);
 		tab_text_4.setTextColor(Color.GRAY);
-		//tab_text_5.setTextColor(Color.GRAY);
+		// tab_text_5.setTextColor(Color.GRAY);
 
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.menu_main, menu);
+		return super.onCreateOptionsMenu(menu);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+
+		// noinspection SimplifiableIfStatement
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		else if(id==R.id.action_about)
+		{
+			Intent intent = new Intent(this,AboutActivity.class);
+			startActivity(intent);
+		}
+		return super.onOptionsItemSelected(item);
+	}
+
+	/*
+	 * 在actionbar中显示overflow
+	 */
+	private void getOverflowMenu() {
+		try {
+			ViewConfiguration config = ViewConfiguration.get(this);
+			Field menuKeyField = ViewConfiguration.class
+					.getDeclaredField("sHasPermanentMenuKey");
+			if (menuKeyField != null) {
+				menuKeyField.setAccessible(true);
+				menuKeyField.setBoolean(config, false);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }

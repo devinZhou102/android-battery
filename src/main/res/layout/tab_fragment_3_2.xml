@@ -5,328 +5,317 @@
     android:layout_height="fill_parent"
     android:background="@drawable/body_background"
     android:orientation="vertical" >
-    
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/title_bg"
-        android:orientation="horizontal" >
 
-        <TextView
-            android:id="@+id/XinTextView0"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:padding="20dp"
-            android:text="超级省电"
-            android:textColor="@android:color/white"
-            android:textSize="30sp" />
-        
-    </RelativeLayout>
-    
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:src="@android:color/background_dark" />
-    
-    <!-- 添加 -->
-    <LinearLayout 
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical" >
-        
-        <RelativeLayout 
+        android:layout_gravity="center_horizontal" >
+
+        <!-- 添加 -->
+
+        <LinearLayout
             android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:padding="8dp"
-	        android:orientation="horizontal" >
-			<TextView
-			    android:id="@+id/XinTextView1"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentLeft="true"
-			    android:layout_marginLeft="40dp"
-			    android:text="亮度"
-			    android:textColor="@android:color/white"
-			    android:textSize="25sp" />
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
-			<Button
-			    android:id="@+id/XinSwitcher1"
-			    android:layout_width="100dp"
-			    android:layout_height="30dp"
-			    android:layout_alignParentRight="true"
-			    android:layout_alignParentTop="true"
-			    android:layout_marginRight="40dp"
-			    android:textColor="@android:color/white"
-			    android:background="@drawable/body_background"
-			    android:text="15%"
-			    android:textSize="20sp"			
-			    />
-        </RelativeLayout>
-        
-        <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:src="@android:color/background_dark" />
-        
-        <RelativeLayout 
-            android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:padding="8dp"
-	        android:orientation="horizontal" >
-			<TextView
-			    android:id="@+id/XinTextView2"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentLeft="true"
-			    android:layout_marginLeft="40dp"
-			    android:text="锁屏"
-			    android:textColor="@android:color/white"
-			    android:textSize="25sp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp" >
 
-			<Button
-			    android:id="@+id/XinSwitcher2"
-			    android:layout_width="100dp"
-			    android:layout_height="30dp"
-			    android:layout_alignParentRight="true"
-			    android:layout_alignParentTop="true"
-			    android:layout_marginRight="40dp"
-			    android:textColor="@android:color/white"
-			    android:background="@drawable/body_background"
-			    android:text="15秒"
-			    android:textSize="20sp"
-			    />
-        </RelativeLayout>
-        
-        <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:src="@android:color/background_dark" />
-        
-        <RelativeLayout 
-            android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:padding="8dp"
-	        android:orientation="horizontal" >
-			<TextView
-			    android:id="@+id/XinTextView3"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentLeft="true"
-			    android:layout_marginLeft="40dp"
-			    android:text="数据"
-			    android:textColor="@android:color/white"
-			    android:textSize="25sp" />
+                <TextView
+                    android:id="@+id/XinTextView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="40dp"
+                    android:text="亮度"
+                    android:textColor="@android:color/white"
+                    android:textSize="25sp" />
 
-			<Switch
-			    android:id="@+id/XinSwitcher3"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentRight="true"
-			    android:layout_alignParentTop="true"
-			    android:layout_marginRight="40dp"
-			    android:checked="true"
-			    android:textOff="OFF"
-			    android:textOn="ON" />
-        </RelativeLayout>
-        
-        <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:src="@android:color/background_dark" />
-        
-        <RelativeLayout 
-            android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:padding="8dp"
-	        android:orientation="horizontal" >
-			<TextView
-			    android:id="@+id/XinTextView4"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentLeft="true"
-			    android:layout_marginLeft="40dp"
-			    android:text="WIFI"
-			    android:textColor="@android:color/white"
-			    android:textSize="25sp" />
+                <Button
+                    android:id="@+id/XinSwitcher1"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="40dp"
+                    android:background="@drawable/body_background"
+                    android:text="15%"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp" />
+            </RelativeLayout>
 
-			<Switch
-			    android:id="@+id/XinSwitcher4"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentRight="true"
-			    android:layout_alignParentTop="true"
-			    android:layout_marginRight="40dp"
-			    android:checked="false"
-			    android:textOff="OFF"
-			    android:textOn="ON" />
-        </RelativeLayout>
-        
-        <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:src="@android:color/background_dark" />
-        
-        <RelativeLayout 
-            android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:padding="8dp"
-	        android:orientation="horizontal" >
-			<TextView
-			    android:id="@+id/XinTextView5"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentLeft="true"
-			    android:layout_marginLeft="40dp"
-			    android:text="蓝牙"
-			    android:textColor="@android:color/white"
-			    android:textSize="25sp" />
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:src="@android:color/background_dark" />
 
-			<Switch
-			    android:id="@+id/XinSwitcher5"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentRight="true"
-			    android:layout_alignParentTop="true"
-			    android:layout_marginRight="40dp"
-			    android:checked="false"
-			    android:textOff="OFF"
-			    android:textOn="ON" />
-        </RelativeLayout>
-		
-        <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:src="@android:color/background_dark" />
-        
-        <RelativeLayout 
-            android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:padding="8dp"
-	        android:orientation="horizontal" >
-			<TextView
-			    android:id="@+id/XinTextView6"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentLeft="true"
-			    android:layout_marginLeft="40dp"
-			    android:text="自动同步"
-			    android:textColor="@android:color/white"
-			    android:textSize="25sp" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp" >
 
-			<Switch
-			    android:id="@+id/XinSwitcher6"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentRight="true"
-			    android:layout_alignParentTop="true"
-			    android:layout_marginRight="40dp"
-			    android:checked="false"
-			    android:textOff="OFF"
-			    android:textOn="ON" />
-        </RelativeLayout>
-        
-        <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:src="@android:color/background_dark" />
-        
-        <RelativeLayout 
-            android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:padding="8dp"
-	        android:orientation="horizontal" >
-			<TextView
-			    android:id="@+id/XinTextView7"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentLeft="true"
-			    android:layout_marginLeft="40dp"
-			    android:text="静音"
-			    android:textColor="@android:color/white"
-			    android:textSize="25sp" />
+                <TextView
+                    android:id="@+id/XinTextView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="40dp"
+                    android:text="锁屏"
+                    android:textColor="@android:color/white"
+                    android:textSize="25sp" />
 
-			<Switch
-			    android:id="@+id/XinSwitcher7"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentRight="true"
-			    android:layout_alignParentTop="true"
-			    android:layout_marginRight="40dp"
-			    android:checked="true"
-			    android:textOff="OFF"
-			    android:textOn="ON" />
-        </RelativeLayout>
-        
-        <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:src="@android:color/background_dark" />
-        
-        <RelativeLayout 
-            android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:padding="8dp"
-	        android:orientation="horizontal" >
-			<TextView
-			    android:id="@+id/XinTextView8"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentLeft="true"
-			    android:layout_marginLeft="40dp"
-			    android:text="振动"
-			    android:textColor="@android:color/white"
-			    android:textSize="25sp" />
+                <Button
+                    android:id="@+id/XinSwitcher2"
+                    android:layout_width="100dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="40dp"
+                    android:background="@drawable/body_background"
+                    android:text="15秒"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp" />
+            </RelativeLayout>
 
-			<Switch
-			    android:id="@+id/XinSwitcher8"
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:layout_alignParentRight="true"
-			    android:layout_alignParentTop="true"
-			    android:layout_marginRight="40dp"
-			    android:checked="false"
-			    android:textOff="OFF"
-			    android:textOn="ON" />
-        </RelativeLayout>
-        
-        <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:src="@android:color/background_dark" />
-        
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingLeft="80dp"
-            android:paddingRight="80dp"
-            android:paddingBottom="40dp"
-            android:paddingTop="40dp" >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:src="@android:color/background_dark" />
 
-            <Button
-                android:id="@+id/SaveButton1"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:text="保存"
-                android:textColor="@android:color/white"
-                android:background="@android:color/darker_gray"
-                android:textSize="25sp" />
-            
-            <Button
-                android:id="@+id/SaveButton2"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentRight="true"
-                android:layout_marginLeft="20dp"
-                android:text="应用"
-                android:textColor="@android:color/white"
-                android:background="@android:color/holo_blue_dark"
-                android:textSize="25sp" />            
-        </RelativeLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp" >
 
-    </LinearLayout>
-    <!-- 添加 -->
-    
+                <TextView
+                    android:id="@+id/XinTextView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="40dp"
+                    android:text="数据"
+                    android:textColor="@android:color/white"
+                    android:textSize="25sp" />
+
+                <Switch
+                    android:id="@+id/XinSwitcher3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="40dp"
+                    android:checked="true"
+                    android:textOff="OFF"
+                    android:textOn="ON" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:src="@android:color/background_dark" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp" >
+
+                <TextView
+                    android:id="@+id/XinTextView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="40dp"
+                    android:text="WIFI"
+                    android:textColor="@android:color/white"
+                    android:textSize="25sp" />
+
+                <Switch
+                    android:id="@+id/XinSwitcher4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="40dp"
+                    android:checked="false"
+                    android:textOff="OFF"
+                    android:textOn="ON" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:src="@android:color/background_dark" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp" >
+
+                <TextView
+                    android:id="@+id/XinTextView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="40dp"
+                    android:text="蓝牙"
+                    android:textColor="@android:color/white"
+                    android:textSize="25sp" />
+
+                <Switch
+                    android:id="@+id/XinSwitcher5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="40dp"
+                    android:checked="false"
+                    android:textOff="OFF"
+                    android:textOn="ON" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:src="@android:color/background_dark" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp" >
+
+                <TextView
+                    android:id="@+id/XinTextView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="40dp"
+                    android:text="自动同步"
+                    android:textColor="@android:color/white"
+                    android:textSize="25sp" />
+
+                <Switch
+                    android:id="@+id/XinSwitcher6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="40dp"
+                    android:checked="false"
+                    android:textOff="OFF"
+                    android:textOn="ON" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:src="@android:color/background_dark" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp" >
+
+                <TextView
+                    android:id="@+id/XinTextView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="40dp"
+                    android:text="静音"
+                    android:textColor="@android:color/white"
+                    android:textSize="25sp" />
+
+                <Switch
+                    android:id="@+id/XinSwitcher7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="40dp"
+                    android:checked="true"
+                    android:textOff="OFF"
+                    android:textOn="ON" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:src="@android:color/background_dark" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="8dp" >
+
+                <TextView
+                    android:id="@+id/XinTextView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_marginLeft="40dp"
+                    android:text="振动"
+                    android:textColor="@android:color/white"
+                    android:textSize="25sp" />
+
+                <Switch
+                    android:id="@+id/XinSwitcher8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginRight="40dp"
+                    android:checked="false"
+                    android:textOff="OFF"
+                    android:textOn="ON" />
+            </RelativeLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:src="@android:color/background_dark" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingBottom="40dp"
+                android:paddingLeft="80dp"
+                android:paddingRight="80dp"
+                android:paddingTop="40dp" >
+
+                <Button
+                    android:id="@+id/SaveButton1"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:background="@android:color/darker_gray"
+                    android:text="保存"
+                    android:textColor="@android:color/white"
+                    android:textSize="25sp" />
+
+                <Button
+                    android:id="@+id/SaveButton2"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginLeft="20dp"
+                    android:background="@android:color/holo_blue_dark"
+                    android:text="应用"
+                    android:textColor="@android:color/white"
+                    android:textSize="25sp" />
+            </RelativeLayout>
+        </LinearLayout>
+        <!-- 添加 -->
+    </ScrollView>
+
 </LinearLayout>

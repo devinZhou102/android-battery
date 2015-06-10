@@ -57,6 +57,7 @@
             android:layout_marginBottom="20dp" />
 
         <TextView
+            android:textColor="@color/darker_gray"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="0"
@@ -83,6 +84,7 @@
             android:gravity="center">
 
             <TextView
+                android:textColor="@color/darker_gray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0 ℃"
@@ -109,6 +111,7 @@
             android:gravity="center">
 
             <TextView
+                android:textColor="@color/darker_gray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0 V"
@@ -136,6 +139,7 @@
             android:gravity="center">
 
             <TextView
+                android:textColor="@color/darker_gray"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Li-ion"

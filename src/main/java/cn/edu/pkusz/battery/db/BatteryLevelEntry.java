@@ -6,10 +6,12 @@ package cn.edu.pkusz.battery.db;
 public class BatteryLevelEntry {
     public long timestamp;
     public float level;
-
-    public BatteryLevelEntry(long timestamp, float level) {
+    public boolean isCharging;
+    
+    public BatteryLevelEntry(long timestamp, float level, boolean isCharging) {
         this.timestamp = timestamp;
         this.level = level;
+        this.isCharging = isCharging;
     }
 
     @Override

@@ -54,7 +54,7 @@ public class TrafficChart {
         mRenderer.setZoomEnabled(false, false);
         mRenderer.setExternalZoomEnabled(false);
         //可点击
-        mRenderer.setClickEnabled(true);
+        mRenderer.setClickEnabled(false);
         mRenderer.setSelectableBuffer(2);
         mRenderer.setApplyBackgroundColor(true);
         mRenderer.setBackgroundColor(Color.argb(255, 47, 54, 62));
@@ -78,12 +78,39 @@ public class TrafficChart {
         XYMultipleSeriesDataset mDataset = new XYMultipleSeriesDataset();
         Random random = new Random();
         //新建一系列点，标题为空
+        double data[] = new double[pointNumber];
+        data[100]=20.0;
+        data[101]=30.0;
+        data[102]=40.0;
+        data[103]=50.0;
+        data[104]=30.0;
+        data[105]=20.0;
+        data[106]=10.0;
         XYSeries series = new XYSeries("");
         for(int i=1;i<=pointNumber;i++){
-            series.add((double)i, random.nextDouble() * 100);
+            series.add((double)i, data[i-1]);
         }
         mDataset.addSeries(series);
         return mDataset;
     }
 
+    public static XYMultipleSeriesDataset buildDataset(double cpumount) {
+        XYMultipleSeriesDataset mDataset = new XYMultipleSeriesDataset();
+        Random random = new Random((long) (cpumount*2));
+        //新建一系列点，标题为空
+        double data[] = new double[pointNumber];
+        data[100]=20.0;
+        data[101]=30.0;
+        data[102]=40.0;
+        data[103]=50.0;
+        data[104]=30.0;
+        data[105]=20.0;
+        data[106]=10.0;
+        XYSeries series = new XYSeries("");
+        for(int i=1;i<=pointNumber;i++){
+            series.add((double)i, random.nextDouble()*100 % 100);
+        }
+        mDataset.addSeries(series);
+        return mDataset;
+    }
 }

@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
-    <string name="app_name">金山电池医生</string>
+    <string name="app_name">电池管家</string>
     <string name="action_settings">设置</string>
+    <string name="action_about">关于</string>
     <string name="menu_settings">Settings</string>
     <string name="refresh_normal">normal</string>
     <string name="refresh_cpu">cpu</string>
@@ -29,14 +30,14 @@
     
     
     <string name="test">test</string>
-    <string name="title_activity_battery_info">BatteryInfoActivity</string>
+    <string name="title_activity_battery_info">电池详情</string>
     <string name="battery_level_status">电量使用情况:</string>
     <string name="add_values">Add values to the chart</string>
     <string name="x">X</string>
     <string name="y">Y</string>
     <string name="add">Add</string>
     <string name="new_series">New series</string>
-    <string name="title_activity_app_detail">AppDetailActivity</string>
+    <string name="title_activity_app_detail">耗电详情</string>
     <string name="upload">上传:</string>
     <string name="download">下载:</string>
     <string name="traffic_unit">KB</string>
@@ -54,7 +55,7 @@
     <string name="health_over_voltage">电压过高</string>
     <string name="health_overheat">过热</string>
     <string name="health_unknown">未知</string>
-    <string name="discharging">放电</string>
+    <string name="discharging">放电中</string>
     <string name="battery_scale">最大电量</string>
     <string name="battery_level">当前电量</string>
     <string name="battery_health">健康状况</string>
@@ -66,5 +67,11 @@
     <string name="shutdown">关闭</string>
     <string name="check">查看</string>
     <string name="consume_detail">耗电详情:</string>
+    <string name="title_charging">专业充电</string>
+    <string name="title_model">省电模式</string>
+    <string name="title_ranking">耗电排行</string>
+    <string name="title_current_model">当前模式</string>
+    <string name="title_super_model">超级省电</string>
+    <string name="title_custom_model">自定义模式</string>
 
 </resources>

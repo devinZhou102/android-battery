@@ -8,6 +8,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -52,8 +54,8 @@ public class BatteryInfoActivity extends FragmentActivity {
         mBattery_health.setText(intent.getStringExtra(TabFragment_1.BATTERY_HEALTH));
         mBattery_scale.setText(intent.getIntExtra(TabFragment_1.BATTERY_SCALE, 100) + "%");
         mBattery_level.setText((int) (intent.getIntExtra(TabFragment_1.BATTERY_LEVEL, 0) / (float) intent.getIntExtra(TabFragment_1.BATTERY_SCALE, 100) * 100) + "%");
-        mBattery_temperature.setText(intent.getIntExtra(TabFragment_1.BATTERY_TEMPERATURE,0) * 0.1 + "℃");
-        mBattery_voltage.setText(intent.getIntExtra(TabFragment_1.BATTERY_VOLTAGE,0)/1000.0 +"V");
+        mBattery_temperature.setText(TabFragment_1.getFloatValue(intent.getIntExtra(TabFragment_1.BATTERY_TEMPERATURE,0) * 0.1) + "℃");
+        mBattery_voltage.setText(TabFragment_1.getFloatValue(intent.getIntExtra(TabFragment_1.BATTERY_VOLTAGE,0)/1000.0) +"V");
         mBattery_craft.setText(intent.getStringExtra(TabFragment_1.BATTERY_CRAFT));
     }
 
@@ -82,4 +84,25 @@ public class BatteryInfoActivity extends FragmentActivity {
         calendar.add(Calendar.DAY_OF_MONTH,position-(NUM_PAGES-1));
         mBattery_level_date.setText(" "+Static.getDateFormatShort().format(calendar.getTime()));
     }
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_app_detail, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
 }

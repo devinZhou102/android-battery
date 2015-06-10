@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -33,6 +35,8 @@ public class TabFragment_2 extends Fragment {
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
+		getActivity().getActionBar().setTitle(R.string.title_charging);
+
 		rootView = inflater.inflate(R.layout.tab_fragment_2, container, false);
 		mCircleProgress = (CircleProgress) rootView.findViewById(R.id.circle_progress);
 		mChargingStatus = (TextView) rootView.findViewById(R.id.charging_status);
@@ -56,7 +60,7 @@ public class TabFragment_2 extends Fragment {
 	public void onResume() {
 		super.onResume();
 		visibleFlag = true;
-		setProgress(this.batteryLevel);
+		setProgress(this.batteryLevel,true);
 		updateChargingStatus(BatteryStatus.isCharging() ? (R.string.charging) : (R.string.nocharging));
 	}
 
@@ -85,8 +89,9 @@ public class TabFragment_2 extends Fragment {
 	public void onHiddenChanged(boolean hidden) {
 		super.onHiddenChanged(hidden);
 		if (this.isVisible()) {
+			getActivity().getActionBar().setTitle(R.string.title_charging);
 			visibleFlag = true;
-			setProgress(this.batteryLevel);
+			setProgress(this.batteryLevel,true);
 		} else {
 			visibleFlag = false;
 		}
@@ -96,7 +101,8 @@ public class TabFragment_2 extends Fragment {
 	显示动态变化过程
 	 */
 
-	public synchronized void setProgress(int batteryLevel) {
+	public synchronized void setProgress(int batteryLevel,boolean forceRepaint) {
+		if(forceRepaint == false  && batteryLevel == this.batteryLevel) return;
 		//防止两个线程同时执行，导致混乱
 		if (thread != null && thread.isAlive()) {
 			return;
@@ -133,41 +139,53 @@ public class TabFragment_2 extends Fragment {
 		mChargingStatus.setText(getString(status));
 	}
 
+	private String batteryStatus = "";
 	class BatteryReceiver extends BroadcastReceiver {
 		private final String TAG = BatteryReceiver.class.getSimpleName();
 
 		@Override
 		public void onReceive(Context context, Intent intent) {
-			Log.e(TAG, "充电状态改变");
 			//获取当前电量
 			int level = intent.getIntExtra("level", 0);
 			int scale = intent.getIntExtra("scale", 100);
 			int batteryLevel = (int) ((level / (float) scale) * 100);
-			setProgress(batteryLevel);
+			
 
 			int batteryVoltage = intent.getIntExtra("voltage", 0);
 			int batteryTemperature = intent.getIntExtra("temperature", 0);
-			Log.e(TAG, "电量：" + batteryLevel + "\t" + batteryVoltage + "\t" + batteryTemperature);
+			String batteryStatus_tmp = "";
 			//记录电池状态
 			String action = intent.getAction();
 			if (action.equals(Intent.ACTION_BATTERY_CHANGED)) {
 				switch (intent.getIntExtra("status", BatteryManager.BATTERY_STATUS_UNKNOWN)) {
 					case BatteryManager.BATTERY_STATUS_CHARGING:
 						updateChargingStatus(R.string.charging);
+						batteryStatus_tmp = getString(R.string.charging);
 						break;
 					case BatteryManager.BATTERY_STATUS_DISCHARGING:
 						updateChargingStatus(R.string.nocharging);
+						batteryStatus_tmp = getString(R.string.discharging);
 						break;
 					case BatteryManager.BATTERY_STATUS_FULL:
 						updateChargingStatus(R.string.chargingFull);
+						batteryStatus_tmp = getString(R.string.chargingFull);
 						break;
 					case BatteryManager.BATTERY_STATUS_NOT_CHARGING:
 						updateChargingStatus(R.string.nocharging);
+						batteryStatus_tmp = getString(R.string.nocharging);
 						break;
 					default:
 						Log.e(TAG, "电池状态未知");
+						batteryStatus_tmp = getString(R.string.unknown);
 						break;
 				}
+				if(batteryStatus.equals(batteryStatus_tmp))
+				{
+					setProgress(batteryLevel,false);
+				}else {
+					setProgress(batteryLevel,true);
+				}
+				batteryStatus = batteryStatus_tmp;
 			} else if (action.equals(Intent.ACTION_BATTERY_LOW)) {
 				Log.e(TAG, "low power");
 			}

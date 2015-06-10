@@ -67,6 +67,10 @@ public class BatteryLevelChart {
         mRenderer.setPointSize(5f);
         //不显示legend(坐标轴的说明文字)
         mRenderer.setShowLegend(false);
+        
+        mRenderer.setSelectableBuffer(2);
+        mRenderer.setBarWidth(1.2f);
+        mRenderer.setBarSpacing(0.5f);
     }
 
     /**
@@ -142,9 +146,7 @@ public class BatteryLevelChart {
         calendar.add(Calendar.HOUR, -24);
         DbManager dbManager = Static.getDbManager();
         List<BatteryLevelEntry> list = dbManager.battery_query(start, end);
-        if (list.size() == 0) {
-            return null;
-        }
+        
         double[] levels = new double[Constants.BATTERY_LEVEL_CHART_POINT_NUM];
         for (BatteryLevelEntry entry : list) {
             long timeInToday = entry.timestamp - calendar.getTimeInMillis();
@@ -152,7 +154,7 @@ public class BatteryLevelChart {
             levels[index] = entry.level * 100;
         }
         //平滑曲线
-        smoothLevels(levels);
+        //smoothLevels(levels);
         return levels;
     }
 

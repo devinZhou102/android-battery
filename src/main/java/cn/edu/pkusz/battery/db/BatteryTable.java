@@ -20,7 +20,8 @@ public class BatteryTable
     public static final String TABLE_NAME = "battery";
     public static final String COLUMN_NAME_TIMESTAMP = "timestamp";
     public static final String COLUMN_NAME_LEVEL = "level";
-
+    public static final String COLUMN_ISCHARGING = "ischarging";
+    
     public static final String TEXT_TYPE = " TEXT";
     public static final String INTEGER_TYPE = " INTEGER";
     public static final String REAL_TYPE = " REAL";
@@ -30,7 +31,8 @@ public class BatteryTable
             "CREATE TABLE " + TABLE_NAME + " ("
                     + BaseColumns._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                     + COLUMN_NAME_TIMESTAMP + TEXT_TYPE + COMMA_SEP
-                    + COLUMN_NAME_LEVEL + REAL_TYPE
+                    + COLUMN_NAME_LEVEL + REAL_TYPE + COMMA_SEP
+                    + COLUMN_ISCHARGING + INTEGER_TYPE
                     + " )";
     public static final String SQL_DELETE_TABLE = "DROP TABLE IF EXISTS " + TABLE_NAME;
 
@@ -43,7 +45,7 @@ public class BatteryTable
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME_TIMESTAMP, entry.timestamp);
         values.put(COLUMN_NAME_LEVEL, entry.level);
-
+        values.put(COLUMN_ISCHARGING, entry.isCharging);
         return db.insert(TABLE_NAME, "null", values);
     }
 
@@ -52,7 +54,7 @@ public class BatteryTable
      */
     public static List<BatteryLevelEntry> query(SQLiteDatabase db ,Long start, Long end) {
 
-        String[] projection = {COLUMN_NAME_TIMESTAMP, COLUMN_NAME_LEVEL};
+        String[] projection = {COLUMN_NAME_TIMESTAMP, COLUMN_NAME_LEVEL, COLUMN_ISCHARGING};
         String sortOrder = COLUMN_NAME_TIMESTAMP + " ASC";
         String selection = COLUMN_NAME_TIMESTAMP + " between ? and ?";
 
@@ -63,7 +65,7 @@ public class BatteryTable
         if (count > 0) {
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
-                BatteryLevelEntry entry = new BatteryLevelEntry(cursor.getLong(0), cursor.getFloat(1));
+                BatteryLevelEntry entry = new BatteryLevelEntry(cursor.getLong(0), cursor.getFloat(1),cursor.getInt(2)==0?false:true);
                 result.add(entry);
                 cursor.moveToNext();
             }
@@ -78,7 +80,7 @@ public class BatteryTable
     public static void showAll(SQLiteDatabase db) {
         Log.e("battery", "====================begin======================");
 
-        String[] projection = {COLUMN_NAME_TIMESTAMP, COLUMN_NAME_LEVEL};
+        String[] projection = {COLUMN_NAME_TIMESTAMP, COLUMN_NAME_LEVEL,COLUMN_ISCHARGING};
         String sortOrder = COLUMN_NAME_TIMESTAMP + " ASC";
 
         Cursor cursor = db.query(TABLE_NAME, projection, null, null, null, null, sortOrder);
@@ -87,7 +89,7 @@ public class BatteryTable
         if (count > 0) {
             cursor.moveToFirst();
             while (!cursor.isAfterLast()) {
-                Log.e("data", Static.getDateFormatLong().format(new Date(cursor.getLong(0))) + "   " + cursor.getFloat(1));
+                Log.e("data", Static.getDateFormatLong().format(new Date(cursor.getLong(0))) + "   " + cursor.getFloat(1)+ "   " + cursor.getInt(2));
                 cursor.moveToNext();
             }
         }

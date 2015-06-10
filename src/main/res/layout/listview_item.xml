@@ -9,7 +9,7 @@
     <ImageView
         android:id="@+id/appIcon"
         android:layout_width="50dp"
-        android:layout_height="match_parent"
+        android:layout_height="50dp"
         android:layout_gravity="center_vertical|left"
         android:layout_margin="5dp"
         android:src="@mipmap/ic_android" />

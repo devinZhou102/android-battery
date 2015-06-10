@@ -64,6 +64,14 @@ public class TabFragment_3_3 extends Activity
 	boolean MobileDataFlag1 = false;
 	int LockScreenFlag1 = 30000;
 	int BrightnessFlag1 = 64;	
+	
+	boolean WifiFlag2;
+	boolean BluetoothFlag2;
+	boolean SyncFlag2;
+	int SilentAndVibrate;
+	boolean MobileDataFlag2;
+	int LockScreenFlag2;
+	int BrightnessFlag2;
 	//-------------------------------------------Wifi-----------------------------------------------------------
     private WifiManager mWifiManager;
     private Switch mWifiButton;
@@ -162,13 +170,38 @@ public class TabFragment_3_3 extends Activity
         mBrightObserver = new BrightObserver(new Handler());
 		//-------------------------------------------Brightness-----------------------------------------------------------
 		
+        //取得启动该Activity的Intent对象
+        Intent intent =getIntent();
+        /*取出Intent中附加的数据*/
+        final String mode = intent.getStringExtra("mode");
+        Log.i("lin2", mode);
+        preferences1 = getSharedPreferences("Save1", MODE_WORLD_READABLE);
+        editor1 = preferences1.edit();     
 		
-		
-		
+    	WifiFlag1 = preferences1.getBoolean(mode + "Wifi", false);		
+    	BluetoothFlag1 = preferences1.getBoolean(mode + "Bluetooth", false);
+    	SyncFlag1 = preferences1.getBoolean(mode + "Sync", false);
+    	if(preferences1.getInt(mode + "RingerMode", AudioManager.RINGER_MODE_NORMAL) == AudioManager.RINGER_MODE_NORMAL)
+    	{
+    		SilentFlag1 = false; 	
+    		VibrateFlag1 = true;
+    	}
+    	else if(preferences1.getInt(mode + "RingerMode", AudioManager.RINGER_MODE_NORMAL) == AudioManager.RINGER_MODE_VIBRATE)
+    	{
+    		SilentFlag1 = true; 	
+    		VibrateFlag1 = true;
+    	}
+    	else
+    	{
+    		SilentFlag1 = true; 	
+    		VibrateFlag1 = false;
+    	}
+    	MobileDataFlag1 = preferences1.getBoolean(mode + "MobileData", false);
+    	LockScreenFlag1 = preferences1.getInt(mode + "LockScreen", 30000);
+    	BrightnessFlag1 = preferences1.getInt(mode + "Brightness", 64);
+        
 		//-------------------------------------------Wifi-----------------------------------------------------------
         mWifiButton = (Switch)findViewById(R.id.XinSwitcher4);
-        Log.i("lin", "lin4");
-        refreshButton4();
         mWifiButton.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton arg0, boolean isChecked4) {
@@ -186,8 +219,6 @@ public class TabFragment_3_3 extends Activity
         
         //-------------------------------------------Bluetooth-----------------------------------------------------------		
 		mBluetooth = (Switch)findViewById(R.id.XinSwitcher5);
-		Log.i("lin", "lin5");
-		refreshButton5();
 		mBluetooth.setOnCheckedChangeListener(new OnCheckedChangeListener() {			
 			@Override
 			public void onCheckedChanged(CompoundButton arg0, boolean isChecked5) {
@@ -200,8 +231,7 @@ public class TabFragment_3_3 extends Activity
 		//-------------------------------------------Bluetooth-----------------------------------------------------------
 		
 		//-------------------------------------------Sync-----------------------------------------------------------
-		mSyncButton = (Switch)findViewById(R.id.XinSwitcher6);
-        refreshButton6();        
+		mSyncButton = (Switch)findViewById(R.id.XinSwitcher6);      
         mSyncButton.setOnCheckedChangeListener(new OnCheckedChangeListener() {			
 			@Override
 			public void onCheckedChanged(CompoundButton arg0, boolean isChecked6) {
@@ -219,7 +249,6 @@ public class TabFragment_3_3 extends Activity
 		
         //-------------------------------------------Silent-----------------------------------------------------------
         mSilentButton = (Switch)findViewById(R.id.XinSwitcher7);
-        refreshButton7();
         mSilentButton.setOnCheckedChangeListener(new OnCheckedChangeListener() {			
 			@Override
 			public void onCheckedChanged(CompoundButton arg0, boolean isChecked7) {
@@ -233,7 +262,6 @@ public class TabFragment_3_3 extends Activity
         
         //-------------------------------------------Vibrate-----------------------------------------------------------       
         mVibrateButton = (Switch)findViewById(R.id.XinSwitcher8);
-        refreshButton8();
         mVibrateButton.setOnCheckedChangeListener(new OnCheckedChangeListener() {			
 			@Override
 			public void onCheckedChanged(CompoundButton arg0, boolean isChecked8) {				
@@ -247,7 +275,6 @@ public class TabFragment_3_3 extends Activity
         
         //-------------------------------------------MobileData-----------------------------------------------------------
 		mMobileDataButton = (Switch) findViewById(R.id.XinSwitcher3);
-		refreshButton3();
 		mMobileDataButton.setOnCheckedChangeListener(new OnCheckedChangeListener() {			
 			@Override
 			public void onCheckedChanged(CompoundButton arg0, boolean isChecked3) {
@@ -265,7 +292,6 @@ public class TabFragment_3_3 extends Activity
         
 		//-------------------------------------------LockScreen-----------------------------------------------------------
 		mLockScreenButton = (Button)findViewById(R.id.XinSwitcher2);
-		refreshButton2();
 		mLockScreenButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -295,7 +321,7 @@ public class TabFragment_3_3 extends Activity
 		}
         
         //进度条绑定当前亮度
-        seekBar.setProgress(light);
+        seekBar.setProgress(preferences1.getInt(mode + "Brightness", 64));
         //根据进度条事件改变亮度
         seekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {			
 			@Override
@@ -320,30 +346,29 @@ public class TabFragment_3_3 extends Activity
 			}
 		});
 		//-------------------------------------------Brightness-----------------------------------------------------------
-		
+
         //-------------------------------------------保存-----------------------------------------------------------
-        preferences1 = getSharedPreferences("Save1", MODE_WORLD_READABLE);
-        editor1 = preferences1.edit();        
+   
         Button SaveButton3 = (Button) findViewById(R.id.SaveButton3);
         SaveButton3.setOnClickListener(new OnClickListener() {			
 			@Override
 			public void onClick(View arg0) {
 				//存入的数据
-				editor1.putBoolean("Wifi", WifiFlag1);
-				editor1.putBoolean("Bluetooth", BluetoothFlag1);
-				editor1.putBoolean("Sync", SyncFlag1);
+				editor1.putBoolean(mode + "Wifi", WifiFlag1);
+				editor1.putBoolean(mode + "Bluetooth", BluetoothFlag1);
+				editor1.putBoolean(mode + "Sync", SyncFlag1);
 				
 				//Silent 和 Vibrate
 				if(SilentFlag1==true && VibrateFlag1==true)
-					editor1.putInt("RingerMode", AudioManager.RINGER_MODE_VIBRATE);
+					editor1.putInt(mode + "RingerMode", AudioManager.RINGER_MODE_VIBRATE);
 				else if(SilentFlag1==true && VibrateFlag1==false)
-					editor1.putInt("RingerMode", AudioManager.RINGER_MODE_SILENT);
+					editor1.putInt(mode + "RingerMode", AudioManager.RINGER_MODE_SILENT);
 				else
-					editor1.putInt("RingerMode", AudioManager.RINGER_MODE_NORMAL);
+					editor1.putInt(mode + "RingerMode", AudioManager.RINGER_MODE_NORMAL);
 				
-				editor1.putBoolean("MobileData", MobileDataFlag1);
-				editor1.putInt("LockScreen", LockScreenFlag1);
-				editor1.putInt("Brightness", BrightnessFlag1);
+				editor1.putBoolean(mode + "MobileData", MobileDataFlag1);
+				editor1.putInt(mode + "LockScreen", LockScreenFlag1);
+				editor1.putInt(mode + "Brightness", BrightnessFlag1);
 
 				// 提交所有存入的数据
 				editor1.commit();
@@ -355,45 +380,106 @@ public class TabFragment_3_3 extends Activity
         Button ApplyButton3 = (Button) findViewById(R.id.ApplyButton3);
         ApplyButton3.setOnClickListener(new OnClickListener() {			
 			@Override
-			public void onClick(View arg0) {
-				//Wifi
-				boolean WifiFlag2 = preferences1.getBoolean("Wifi", mWifiManager.isWifiEnabled());
+			public void onClick(View arg0) {				
+				//Wifi				
+				WifiFlag2 = preferences1.getBoolean(mode + "Wifi", mWifiManager.isWifiEnabled());
 				mWifiManager.setWifiEnabled(WifiFlag2);
 				
 				//Bluetooth
-				boolean BluetoothFlag2 = preferences1.getBoolean("Bluetooth", false);
+				BluetoothFlag2 = preferences1.getBoolean(mode + "Bluetooth", false);
 				if(BluetoothFlag2)
 					mBluetoothAdapter.enable();
 				else
 					mBluetoothAdapter.disable();
-				refreshButton5();
+				//refreshButton5();
 				
 				//Sync
-				boolean SyncFlag2 = preferences1.getBoolean("Sync", getSyncStatus(TabFragment_3_3.this));
+				SyncFlag2 = preferences1.getBoolean(mode + "Sync", getSyncStatus(TabFragment_3_3.this));
 				setSyncStatus(SyncFlag2);		
 				
 				//Silent 和 Vibrate
-				int SilentAndVibrate = preferences1.getInt("RingerMode", getSilentStatus());
+				SilentAndVibrate = preferences1.getInt(mode + "RingerMode", getSilentStatus());
 				mAudioManager.setRingerMode(SilentAndVibrate);
 				
 				//MobileData
-				boolean MobileDataFlag2 = preferences1.getBoolean("MobileData", getMobileDataStatus());
+				MobileDataFlag2 = preferences1.getBoolean(mode + "MobileData", getMobileDataStatus());
 				setMobileDataStatus(MobileDataFlag2);
 				
 				//LockScreen
-				int LockScreenFlag2 = preferences1.getInt("LockScreen", getScreenOffTime());
+				LockScreenFlag2 = preferences1.getInt(mode + "LockScreen", getScreenOffTime());
 				Settings.System.putInt(getContentResolver(), Settings.System.SCREEN_OFF_TIMEOUT, LockScreenFlag2);
 				refreshButton2();
 				
 				//Brightness
-				int BrightnessFlag2 = preferences1.getInt("Brightness", android.provider.Settings.System.getInt(getContentResolver(),
+				BrightnessFlag2 = preferences1.getInt(mode + "Brightness", android.provider.Settings.System.getInt(getContentResolver(),
 						Settings.System.SCREEN_BRIGHTNESS, -1));
 				//根据当前进度改变亮度
 				setLight(BrightnessFlag2);
 				setScreenLightValue(getContentResolver(), BrightnessFlag2);
 			}
 		});
+               
         //-------------------------------------------应用-----------------------------------------------------------
+        WifiFlag2 = preferences1.getBoolean(mode + "Wifi", mWifiManager.isWifiEnabled());
+        if(WifiFlag2)
+    		mWifiButton.setChecked(true);
+    	else
+    		mWifiButton.setChecked(false);
+
+        BluetoothFlag2 = preferences1.getBoolean(mode + "Bluetooth", false);
+        if(BluetoothFlag2)
+        	mBluetooth.setChecked(true);
+        else
+        	mBluetooth.setChecked(false);
+        
+        SyncFlag2 = preferences1.getBoolean(mode + "Sync", getSyncStatus(TabFragment_3_3.this));
+        if(SyncFlag2)
+    	{
+    		mSyncButton.setChecked(true);
+    	}
+    	else
+    	{
+    		mSyncButton.setChecked(false);
+    	}
+        
+        SilentAndVibrate = preferences1.getInt(mode + "RingerMode", getSilentStatus());
+        switch (SilentAndVibrate)
+      	{
+  		case AudioManager.RINGER_MODE_SILENT:
+  			mSilentButton.setChecked(true);
+  			mVibrateButton.setChecked(false);
+  			break;
+  		case AudioManager.RINGER_MODE_NORMAL:
+  			mSilentButton.setChecked(false);
+  			mVibrateButton.setChecked(true);
+  			break;  
+  		case AudioManager.RINGER_MODE_VIBRATE:
+  			mSilentButton.setChecked(true);
+  			mVibrateButton.setChecked(true);
+  			break;	  		
+  		default:
+  			break;
+      	}
+        
+        MobileDataFlag2 = preferences1.getBoolean(mode + "MobileData", getMobileDataStatus());
+        if(MobileDataFlag2)
+    	{
+    		mMobileDataButton.setChecked(true);
+    	}
+    	else
+    	{
+    		mMobileDataButton.setChecked(false);
+    	}
+        
+        LockScreenFlag2 = preferences1.getInt(mode + "LockScreen", getScreenOffTime());
+        if(LockScreenFlag2/1000 < 60)
+			mLockScreenButton.setText(String.valueOf(LockScreenFlag2/1000) + "秒");
+		else
+			mLockScreenButton.setText(String.valueOf(LockScreenFlag2/1000/60) + "分钟");
+        
+        BrightnessFlag2 = preferences1.getInt(mode + "Brightness", 64);
+      //进度条绑定当前亮度
+        seekBar.setProgress(BrightnessFlag2);
     }
     
     @Override
@@ -573,9 +659,9 @@ public class TabFragment_3_3 extends Activity
 		
 		try 
 		{
-			Method method = cmClass.getMethod(methodName, new Class[0]);
+			Method method = cmClass.getMethod(methodName, null);
 
-			isOpen = (Boolean) method.invoke(mConnectivityManager, new Object[]{});
+			isOpen = (Boolean) method.invoke(mConnectivityManager, null);
 		} 
 		catch (Exception e) 
 		{

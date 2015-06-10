@@ -19,7 +19,6 @@ public class DbManager {
     private SQLiteDatabase rDb;
 
     public DbManager(Context context) {
-    	Log.e("context", String.valueOf(GlobalApplication.getContext()));
     	dbHelper = new DbHelper(GlobalApplication.getContext());
         wDb = dbHelper.getWritableDatabase();
         rDb = dbHelper.getReadableDatabase();
